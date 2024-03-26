@@ -1,5 +1,5 @@
 import {Page, Document, StyleSheet, Text, Image} from "@react-pdf/renderer";
-
+import logo from '../../../logo.png'
 
 const Orders = () => {
 
@@ -37,6 +37,7 @@ const Orders = () => {
     image: {
       marginVertical: 15,
       marginHorizontal: 100,
+      height:100
     },
     header: {
       fontSize: 12,
@@ -57,14 +58,13 @@ const Orders = () => {
 
 
   return (
-
       <Document>
         <Page size={'A4'} style={styles.body}>
           <Text style={styles.header} fixed>
             ~ Created with react-pdf ~
           </Text>
           <Text style={styles.title}>Don Quijote de la Mancha</Text>
-          <Image/>
+          <Image style={styles.image} src={logo} alt={'nfksndf'}/>
         </Page>
       </Document>
   );
