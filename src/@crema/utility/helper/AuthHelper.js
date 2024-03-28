@@ -43,10 +43,10 @@ export const getUserFromJwtAuth = (user) => {
     return {
       id: 1,
       uid: user?.id,
-      displayName: user?.first_name,
+      displayName: user?.fulName,
       email: user?.email,
-      photoURL: user?.avatar,
-      role: authRole?.user,
+      photoURL: `${process.env.REACT_APP_IMAGE_URL}/${user?.image}`,
+      role: user.role===1 ? authRole?.admin:authRole.user,
     };
   return user;
 };

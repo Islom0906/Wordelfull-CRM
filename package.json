@@ -1,5 +1,5 @@
 {
-  "name": "sirius-tech-motors",
+  "name": "wonderfullcity-crm",
   "homepage": "/admin",
   "version": "0.1.0",
   "private": true,
@@ -19,6 +19,7 @@
     "clsx": "^2.1.0",
     "connected-react-router": "^6.9.3",
     "craco-less": "^3.0.1",
+    "dayjs": "^1.11.10",
     "draft-convert": "^2.1.13",
     "history": "^5.3.0",
     "moment": "^2.30.1",

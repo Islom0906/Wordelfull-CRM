@@ -22,8 +22,15 @@ const apiService = {
     // malutmotni edit qilish uchun url,id va yaratilgan malumot beriladi
     // url / boshlansin yani /edu shunga oxshagan
     async editData(url, formData, id) {
+
+        if (id){
+
         const {data}= await axios.put(`${url}/${id}/`, formData)
         return data
+        }else {
+            const {data}= await axios.put(`${url}`, formData)
+            return data
+        }
     },
     // malutmotni delete qilish uchun url va id  beriladi
     // url / boshlansin yani /edu shunga oxshagan

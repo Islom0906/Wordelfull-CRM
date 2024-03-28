@@ -76,6 +76,7 @@ const renderMenuItem = (item, sidebarColorSet, index) => {
 };
 
 const renderHorMenu = (item, sidebarColorSet, index) => {
+
   return item.type === 'group' ? (
     <Menu.SubMenu
       style={getStyles(item, sidebarColorSet, index, true)}

@@ -30,7 +30,7 @@ const JWTAuthAuthProvider = ({children}) => {
   jwtAxios.interceptors.response.use(
       (res) => res,
       async (err) => {
-        const getRefToken = localStorage.getItem('siriusRefToken')
+        const getRefToken = localStorage.getItem('wonderfulRefToken')
 
         if (err.response.status === 401 && err.response.config.method !== "get" && getRefToken) {
           try {
@@ -38,7 +38,7 @@ const JWTAuthAuthProvider = ({children}) => {
               refresh: getRefToken
             }
             const newToken = await apiService.postData('/users/user/token/refresh/', refreshTokenData);
-            localStorage.setItem('siriusToken', newToken.access)
+            localStorage.setItem('wonderfulToken', newToken.access)
 
             // Retry the original request with the new token
             const originalRequest = err.config;
@@ -63,7 +63,7 @@ const JWTAuthAuthProvider = ({children}) => {
 
   useEffect(() => {
     const getAuthUser = () => {
-      const token = localStorage.getItem('siriusToken');
+      const token = localStorage.getItem('wonderfulToken');
       if (!token) {
         setJWTAuthData({
           user: undefined,
@@ -80,7 +80,7 @@ const JWTAuthAuthProvider = ({children}) => {
       }
       setAuthToken(token);
       jwtAxios
-        .get('/users/user/me')
+        .get('/Authorize')
         .then(({data}) =>
           setJWTAuthData({
             user: data,
@@ -100,17 +100,17 @@ const JWTAuthAuthProvider = ({children}) => {
     getAuthUser();
   }, []);
 
-  const signInUser = async ({username, password}) => {
-    if (localStorage.getItem('siriusRefToken')){
-      localStorage.removeItem('siriusRefToken')
+  const signInUser = async ({userName, password}) => {
+    if (localStorage.getItem('wonderfulRefToken')){
+      localStorage.removeItem('wonderfulRefToken')
     }
 
     dispatch({type: FETCH_START});
     try {
-      const {data} = await jwtAxios.post(`/users/user/token/`,{username, password});
-      localStorage.setItem('siriusToken', data.access);
-      localStorage.setItem('siriusRefToken', data.refresh);
-      setAuthToken(data.access);
+      const {data} = await jwtAxios.post(`/Authorize/login?userName=${userName}&password=${password}`);
+      localStorage.setItem('wonderfulToken', data);
+      // localStorage.setItem('wonderfulRefToken', data.refresh);
+      setAuthToken(data);
       // const res = await jwtAxios.get('/auth');
       setJWTAuthData({user: undefined, isAuthenticated: true, isLoading: false});
       dispatch({type: FETCH_SUCCESS});
@@ -145,8 +145,8 @@ const JWTAuthAuthProvider = ({children}) => {
   };
 
   const logout = async () => {
-    localStorage.removeItem('siriusToken');
-    localStorage.removeItem('siriusRefToken');
+    localStorage.removeItem('wonderfulToken');
+    localStorage.removeItem('wonderfulRefToken');
     // setAuthToken();
     setJWTAuthData({
       user: null,

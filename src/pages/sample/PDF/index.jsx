@@ -1,5 +1,4 @@
 import {Page, Document, StyleSheet, Text, Image} from "@react-pdf/renderer";
-import logo from '../../../logo.png'
 
 const Orders = () => {
 
@@ -64,10 +63,12 @@ const Orders = () => {
             ~ Created with react-pdf ~
           </Text>
           <Text style={styles.title}>Don Quijote de la Mancha</Text>
-          <Image style={styles.image} src={logo} alt={'nfksndf'}/>
+          <Image style={styles.image} src={''} alt={'nfksndf'}/>
         </Page>
       </Document>
   );
 };
 
 export default Orders;
+
+

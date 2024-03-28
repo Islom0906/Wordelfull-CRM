@@ -4,6 +4,7 @@ import React from 'react';
 import routesConfig from '../../pages/routeConfig';
 import {useIntl} from 'react-intl';
 import {useSidebarContext} from './AppContextProvider/SidebarContextProvider';
+import {useAuthUser} from "./AuthHooks";
 
 function getStyles(item, sidebarColorSet, isSidebarBgImage, index, isGroup) {
   const {pathname} = useLocation();
@@ -67,6 +68,9 @@ const renderMenuItemChildren = (item) => {
 };
 
 const renderMenuItem = (item, sidebarColorSet, isSidebarBgImage, index) => {
+  const {user}=useAuthUser()
+  console.log(user)
+  // if (item.role===authRole.admin){}
   return item.type === 'collapse' ? (
     <Menu.SubMenu
       style={getStyles(item, sidebarColorSet, isSidebarBgImage, index, true)}

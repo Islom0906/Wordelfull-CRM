@@ -76,7 +76,9 @@ const UserInfo = ({hasColor}) => {
                   </span>
                 </span>
                 <span className='cr-user-designation text-truncate'>
-                  System Manager
+                  {
+                    user?.role[1]==='admin' ? "System admin":"Seller"
+                  }
                 </span>
               </span>
             </a>
