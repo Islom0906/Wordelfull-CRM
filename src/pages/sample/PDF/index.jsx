@@ -1,74 +1,35 @@
-import {Page, Document, StyleSheet, Text, Image} from "@react-pdf/renderer";
+import {PDFDownloadLink, PDFViewer} from '@react-pdf/renderer';
+import {CreatPDF} from "./creat-PDF";
 
-const Orders = () => {
+const PDF = () => {
 
-// Create styles
-  const styles = StyleSheet.create({
-    body: {
-      paddingTop: 35,
-      paddingBottom: 65,
-      paddingHorizontal: 35,
-      display:"flex",
-      flexDirection:"column",
-      backgroundColor:'red'
-    },
-    title: {
-      fontSize: 24,
-      textAlign: 'center',
-      fontFamily: 'Oswald'
-    },
-    author: {
-      fontSize: 12,
-      textAlign: 'center',
-      marginBottom: 40,
-    },
-    subtitle: {
-      fontSize: 18,
-      margin: 12,
-      fontFamily: 'Oswald'
-    },
-    text: {
-      margin: 12,
-      fontSize: 14,
-      textAlign: 'justify',
-      fontFamily: 'Times-Roman'
-    },
-    image: {
-      marginVertical: 15,
-      marginHorizontal: 100,
-      height:100
-    },
-    header: {
-      fontSize: 12,
-      marginBottom: 20,
-      textAlign: 'center',
-      color: 'grey',
-    },
-    pageNumber: {
-      position: 'absolute',
-      fontSize: 12,
-      bottom: 30,
-      left: 0,
-      right: 0,
-      textAlign: 'center',
-      color: 'grey',
-    },
-  });
-
-
+  //
   return (
-      <Document>
-        <Page size={'A4'} style={styles.body}>
-          <Text style={styles.header} fixed>
-            ~ Created with react-pdf ~
-          </Text>
-          <Text style={styles.title}>Don Quijote de la Mancha</Text>
-          <Image style={styles.image} src={''} alt={'nfksndf'}/>
-        </Page>
-      </Document>
+      <div>
+
+
+          <PDFViewer style={{ width: '100%', height: '500px' }}>
+              <CreatPDF />
+          </PDFViewer>
+          <br/>
+          <br/>
+          <br/>
+
+          {<PDFDownloadLink
+              document={<CreatPDF   />}
+              fileName="CreatPDF.pdf"
+              style={{
+                  textDecoration: "none",
+                  padding: "10px",
+                  color: "#4a4a4a",
+                  backgroundColor: "#f2f2f2",
+                  border: "1px solid #4a4a4a"
+              }}
+          >
+             salom
+          </PDFDownloadLink>}
+      </div>
   );
 };
 
-export default Orders;
-
-
+export default PDF;
