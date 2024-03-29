@@ -18,6 +18,7 @@ function getStyles(item, sidebarColorSet, isSidebarBgImage, index, isGroup) {
   } else {
     const isActive = defaultOpenKeys[index] === item.id;
 
+    console.log(isActive)
     console.log(sidebarColorSet?.sidebarMenuSelectedBgColor)
     return {
       color: isActive

@@ -20,8 +20,8 @@ export const LightSidebar = {
   sidebarBgColor: '#fff',
   sidebarTextColor: 'rgba(0, 0, 0, 0.60)',
   sidebarHeaderColor: '#fff',
-  sidebarMenuSelectedBgColor: '#0014f6',
-  sidebarMenuSelectedTextColor: 'rgb(255,255,255)',
+  sidebarMenuSelectedBgColor: '#F4F7FE',
+  sidebarMenuSelectedTextColor: 'rgba(0, 0, 0, 0.87)',
   mode: ThemeMode.LIGHT,
 };
 const defaultConfig = {
