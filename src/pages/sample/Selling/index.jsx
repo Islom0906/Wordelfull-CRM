@@ -214,7 +214,7 @@ const Index = () => {
                     </Col>
                     <Col span={6}>
                         <Form.Item
-                            label={'Выберите пол'}
+                            label={'Выберите этаж'}
                             name={'floorId'}
 
                             wrapperCol={{

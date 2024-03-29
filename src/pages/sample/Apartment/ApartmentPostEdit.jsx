@@ -466,10 +466,10 @@ const ApartmentPostEdit = () => {
                     </Col>
                     <Col span={8}>
                         <Form.Item
-                            label={'Выберите пол'}
+                            label={'Выберите этаж'}
                             name={'floorId'}
                             rules={[{
-                                required: true, message: 'Вы должны выбрать пол'
+                                required: true, message: 'Вы должны выбрать этаж'
                             }]}
                             wrapperCol={{
                                 span: 24,
@@ -479,7 +479,7 @@ const ApartmentPostEdit = () => {
                                 style={{
                                     width: '100%',
                                 }}
-                                placeholder='Выберите одну пол'
+                                placeholder='Выберите одну этаж'
                                 optionLabelProp='label'
                                 options={optionsFloor}
                             />
@@ -525,7 +525,7 @@ const ApartmentPostEdit = () => {
                 <Row gutter={20}>
                     <Col span={12}>
                         <Form.Item
-                            label='Фотография с пола комнаты'
+                            label='Фотография с этажа комнаты'
                             name={'florImageId'}
                             rules={[{required: true, message: 'Требуется изображение'}]}>
                             <ImgCrop>
