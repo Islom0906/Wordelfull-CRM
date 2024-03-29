@@ -1,4 +1,4 @@
-import React, {useEffect,  useState} from 'react';
+    import React, {useEffect,  useState} from 'react';
 import {Button, Col, Form, message, Row,  Upload} from "antd";
 import {useMutation, useQuery} from "react-query";
 import apiService from "../../../@crema/services/apis/api";
@@ -178,7 +178,7 @@ const UserPostEdit = () => {
             imageId:fileListProps[0] ? fileListProps[0]?.uid :1
         };
         if (editUserSuccess) {
-            putUser({url: `/User?id=${editId}`, data});
+            putUser({url: `/User`, data,id:editId});
         } else {
             postUserMutate({url: "/User/", data});
         }

@@ -17,7 +17,8 @@ const CourseTable = ({data, refetch}) => {
     const [form] = Form.useForm();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editId, setEditId] = useState(null)
-    console.log(data)
+
+
     const {
         mutate: editStatusMutate,
         data: editStatus,

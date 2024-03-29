@@ -111,8 +111,8 @@ const JWTAuthAuthProvider = ({children}) => {
       localStorage.setItem('wonderfulToken', data);
       // localStorage.setItem('wonderfulRefToken', data.refresh);
       setAuthToken(data);
-      // const res = await jwtAxios.get('/auth');
-      setJWTAuthData({user: undefined, isAuthenticated: true, isLoading: false});
+      const {data:userInfo} = await jwtAxios.get('/Authorize');
+      setJWTAuthData({user: userInfo, isAuthenticated: true, isLoading: false});
       dispatch({type: FETCH_SUCCESS});
     } catch (error) {
       console.log(error)

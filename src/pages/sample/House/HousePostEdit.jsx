@@ -177,7 +177,7 @@ const HousePostEdit = () => {
             imageId:fileListProps[0]?.uid
         };
         if (editHouseSuccess) {
-            putHouse({url: `/House?id=${editId}`, data});
+            putHouse({url: `/House`, data,id:editId});
         } else {
             postHouseMutate({url: "/House/", data});
         }
@@ -295,8 +295,8 @@ const HousePostEdit = () => {
                     <Col span={12}>
                         <FormInput
                             required={true}
-                            required_text={'Требуется название лота'}
-                            label={'Название лота'}
+                            required_text={'Требуется название дом'}
+                            label={'Название дом'}
                             name={'name'}
                         />
 

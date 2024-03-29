@@ -11,7 +11,7 @@ import {MenuStyle} from '../../../../../shared/constants/AppEnums';
 const AppVerticalNav = () => {
   const {menuStyle, sidebarColorSet} = useSidebarContext();
   const {pathname} = useLocation();
-  const selectedKeys = pathname.substr(1).split('/');
+  const selectedKeys = pathname.substring(1).split('/');
   const defaultOpenKeys = selectedKeys[0];
   const [openKeys, setOpenKeys] = useState([defaultOpenKeys]);
 
@@ -30,10 +30,10 @@ const AppVerticalNav = () => {
       mode='inline'
       className={clsx('app-main-sidebar-menu ', {
         'menu-rounded': menuStyle === MenuStyle.ROUNDED,
-        'menu-rounded rounded-menu-reverse':
-          menuStyle === MenuStyle.ROUNDED_REVERSE,
-        'menu-rounded standard-menu': menuStyle === MenuStyle.STANDARD,
-        'menu-rounded curved-menu': menuStyle === MenuStyle.CURVED_MENU,
+        // 'menu-rounded rounded-menu-reverse':
+        //   menuStyle === MenuStyle.ROUNDED_REVERSE,
+        // 'menu-rounded standard-menu': menuStyle === MenuStyle.STANDARD,
+        // 'menu-rounded curved-menu': menuStyle === MenuStyle.CURVED_MENU,
         'bg-color-menu':
           sidebarColorSet.sidebarBgColor !==
           defaultConfig.sidebar.colorSet.sidebarBgColor,

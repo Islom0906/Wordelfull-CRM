@@ -11,7 +11,7 @@ const AppFooter = () => {
   if (!footer) {
     return (
       <Footer className='app-main-footer'>
-        <p>Created by:  <b> Abduganiev Technology</b> </p>
+        <p>Created by: <a  href="https://abduganiev.uz/"><b> Abduganiev Technology</b></a> </p>
         {/* <div className='footer-btn-view'>
           <Button type='link' className='footer-btn' color='primary'>
             Buy Now

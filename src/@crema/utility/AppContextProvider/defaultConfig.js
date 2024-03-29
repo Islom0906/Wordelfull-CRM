@@ -20,14 +20,14 @@ export const LightSidebar = {
   sidebarBgColor: '#fff',
   sidebarTextColor: 'rgba(0, 0, 0, 0.60)',
   sidebarHeaderColor: '#fff',
-  sidebarMenuSelectedBgColor: '#F4F7FE',
-  sidebarMenuSelectedTextColor: 'rgba(0, 0, 0, 0.87)',
+  sidebarMenuSelectedBgColor: '#D4B57C',
+  sidebarMenuSelectedTextColor: 'rgba(255,255,255,0.87)',
   mode: ThemeMode.LIGHT,
 };
 const defaultConfig = {
   sidebar: {
     borderColor: '#757575',
-    menuStyle: MenuStyle.DEFAULT,
+    menuStyle: MenuStyle.ROUNDED,
     isSidebarBgImage: false,
     sidebarBgImage: 1,
     colorSet: LightSidebar,

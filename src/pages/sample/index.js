@@ -3,6 +3,7 @@ import {RoutePermittedRole} from '../../shared/constants/AppEnums';
 
 const PDF = React.lazy(() => import('./PDF'));
 const CreatPDF = React.lazy(() => import('./PDF/creat-PDF'));
+const Selling = React.lazy(() => import('./Selling'));
 const Slot = React.lazy(() => import('./Slot'));
 const SlotPostEdit = React.lazy(() => import('./Slot/SlotPostEdit'));
 const House = React.lazy(() => import('./House'));
@@ -14,6 +15,8 @@ const PaymentPostEdit = React.lazy(() => import('./Payment Method/AppartmentPost
 const User = React.lazy(() => import('./User'));
 const UserPostEdit = React.lazy(() => import('./User/UserPostEdit'));
 const Course = React.lazy(() => import('./Course'));
+const Apartment = React.lazy(() => import('./Apartment'));
+const ApartmentPostEdit = React.lazy(() => import('./Apartment/ApartmentPostEdit'));
 
 
 export const samplePagesConfigs = [
@@ -29,31 +32,36 @@ export const samplePagesConfigs = [
   },
   {
     permittedRole: RoutePermittedRole.user,
+    path: '/selling',
+    element: <Selling/>,
+  },
+  {
+    permittedRole: RoutePermittedRole.admin,
     path: '/slot',
     element: <Slot/>,
   },
   {
-    permittedRole: RoutePermittedRole.user,
+    permittedRole: RoutePermittedRole.admin,
     path: '/slot/add',
     element: <SlotPostEdit/>,
   },
   {
-    permittedRole: RoutePermittedRole.user,
+    permittedRole: RoutePermittedRole.admin,
     path: '/house',
     element: <House/>,
   },
   {
-    permittedRole: RoutePermittedRole.user,
+    permittedRole: RoutePermittedRole.admin,
     path: '/house/add',
     element: <HousePostEdit/>,
   },
   {
-    permittedRole: RoutePermittedRole.user,
+    permittedRole: RoutePermittedRole.admin,
     path: '/floor',
     element: <Floor/>,
   },
   {
-    permittedRole: RoutePermittedRole.user,
+    permittedRole: RoutePermittedRole.admin,
     path: '/floor/add',
     element: <FloorPostEdit/>,
   },
@@ -68,18 +76,28 @@ export const samplePagesConfigs = [
     element: <PaymentPostEdit/>,
   },
   {
-    permittedRole: RoutePermittedRole.user,
+    permittedRole: RoutePermittedRole.admin,
     path: '/user',
     element: <User/>,
   },
   {
-    permittedRole: RoutePermittedRole.user,
+    permittedRole: RoutePermittedRole.admin,
     path: '/user/add',
     element: <UserPostEdit/>,
   },
   {
-    permittedRole: RoutePermittedRole.user,
+    permittedRole: RoutePermittedRole.admin,
     path: '/course',
     element: <Course/>,
+  },
+  {
+    permittedRole: RoutePermittedRole.admin,
+    path: '/apartment',
+    element: <Apartment/>,
+  },
+  {
+    permittedRole: RoutePermittedRole.admin,
+    path: '/apartment/add',
+    element: <ApartmentPostEdit/>,
   },
 ];

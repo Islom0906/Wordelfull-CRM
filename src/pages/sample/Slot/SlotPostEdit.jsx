@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Button, Col, DatePicker, Form, message, Row} from "antd";
 import {useMutation, useQuery} from "react-query";
 import apiService from "../../../@crema/services/apis/api";
@@ -25,10 +25,6 @@ const SlotPostEdit = () => {
     const dispatch = useDispatch()
 
 
-    const [dataPicker, setDataPicker] = useState('2024-03-06T09:34:52.723Z')
-
-
-    console.log(dataPicker)
 
 
 
@@ -117,10 +113,9 @@ const SlotPostEdit = () => {
 
             const edit = {
                 name: editSlotData?.name,
-                finishedDate: editSlotData?.finishedDate,
+                finishedDate: moment(editSlotData?.finishedDate),
             }
 
-            setDataPicker(editSlotData?.finishedDate)
             form.setFieldsValue(edit)
         }
 
@@ -166,9 +161,6 @@ const SlotPostEdit = () => {
         }
     }, []);
 
-    const handleDateChange = (date, dateString) => {
-        console.log(date._d,dateString)
-    };
 
 
 
@@ -214,7 +206,7 @@ const SlotPostEdit = () => {
                                 required: true, message: 'Укажите время окончания.'
                             }]}
                         >
-                            <DatePicker defaultValue={moment('2015-06-06', "DD.MM.YYYY")} disabled onChange={handleDateChange}/>
+                            <DatePicker />
                         </Form.Item>
 
                     </Col>

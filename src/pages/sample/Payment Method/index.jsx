@@ -92,6 +92,7 @@ const Index = () => {
             <AppartmentTable
                 data={isSearch ? search : data?.result}
                 deleteHandle={deleteHandle}
+                refetch={refetch}
             />
           </Spin>
         </Space>
