@@ -25,6 +25,15 @@ const routesConfig = [
                 role:authRole.user
             },
             {
+                id: 'selling',
+                title: 'selling',
+                messageId: 'sidebar.sample.selling',
+                type: 'item',
+                icon: <IoIosStats/>,
+                path: '/selling',
+                role:authRole.user
+            },
+            {
                 id: 'slot',
                 title: 'slot',
                 messageId: 'sidebar.sample.slot',

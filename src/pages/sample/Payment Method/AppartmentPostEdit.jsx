@@ -82,8 +82,6 @@ const AppartmentPostEdit = () => {
     });
 
 
-
-
     //                                              =====useEffect====
 
 

@@ -61,7 +61,7 @@ const Index = () => {
       setIsSearch(true);
     }
 
-    const filterData = data?.item1?.filter(
+    const filterData = data?.result?.filter(
         (data) =>
             data.name.toLowerCase().includes(value.toLowerCase()));
     setSearch(filterData);
@@ -88,7 +88,7 @@ const Index = () => {
               size='medium'
               spinning={getNewsLoading || deleteNewsLoading}>
             <ApartmentTable
-                data={isSearch ? search : data?.item1}
+                data={isSearch ? search : data?.result}
                 deleteHandle={deleteHandle}
             />
           </Spin>

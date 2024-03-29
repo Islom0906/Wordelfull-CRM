@@ -7,7 +7,7 @@ import {useSidebarContext} from './AppContextProvider/SidebarContextProvider';
 
 function getStyles(item, sidebarColorSet, isSidebarBgImage, index, isGroup) {
   const {pathname} = useLocation();
-  const selectedKeys = pathname.substr(1);
+  const selectedKeys = pathname.substring(1);
   const defaultOpenKeys = selectedKeys.split('/');
 
   if (index === 0 || isGroup) {
@@ -16,10 +16,9 @@ function getStyles(item, sidebarColorSet, isSidebarBgImage, index, isGroup) {
       backgroundColor: isSidebarBgImage ? '' : sidebarColorSet.sidebarBgColor,
     };
   } else {
-    const isActive = defaultOpenKeys[index] === item.id;
+    const isActive = defaultOpenKeys[0] === item.id;
 
-    console.log(isActive)
-    console.log(sidebarColorSet?.sidebarMenuSelectedBgColor)
+
     return {
       color: isActive
         ? sidebarColorSet.sidebarMenuSelectedTextColor
@@ -81,7 +80,8 @@ const renderMenuItem = (item, sidebarColorSet, isSidebarBgImage, index) => {
   ) : (
     <Menu.Item
       key={item.id}
-      style={getStyles(item, sidebarColorSet, isSidebarBgImage, index)}>
+      style={getStyles(item, sidebarColorSet, isSidebarBgImage, index)}
+    >
       {item.children
         ? item.children
         : renderMenuItemChildren(item, sidebarColorSet, isSidebarBgImage)}
@@ -92,6 +92,7 @@ const renderMenuItem = (item, sidebarColorSet, isSidebarBgImage, index) => {
 const renderMenu = (item, sidebarColorSet, isSidebarBgImage, index) => {
   return item.type === 'group' ? (
     <Menu.ItemGroup
+
       style={getStyles(item, sidebarColorSet, isSidebarBgImage, index, true)}
       key={item.path ? item.path : item.id}
       title={renderMenuItemChildren(item, sidebarColorSet, isSidebarBgImage)}>
@@ -101,6 +102,7 @@ const renderMenu = (item, sidebarColorSet, isSidebarBgImage, index) => {
     </Menu.ItemGroup>
   ) : (
     <Menu.Item
+
       key={item.id}
       exact={item.exact}
       style={getStyles(item, sidebarColorSet, isSidebarBgImage, index)}>

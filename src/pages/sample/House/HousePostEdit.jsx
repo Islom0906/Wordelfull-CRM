@@ -291,6 +291,17 @@ const HousePostEdit = () => {
 
 
                 <Row gutter={20}>
+
+                    <Col span={12}>
+                        <FormInput
+                            required={true}
+                            required_text={'Требуется название дом'}
+                            label={'Название дом'}
+                            name={'name'}
+                        />
+
+
+                    </Col>
                     <Col span={12}>
                         <Form.Item
                             label={'Выберите слот'}
@@ -312,17 +323,6 @@ const HousePostEdit = () => {
                             />
                         </Form.Item>
                     </Col>
-                    <Col span={12}>
-                        <FormInput
-                            required={true}
-                            required_text={'Требуется название дом'}
-                            label={'Название дом'}
-                            name={'name'}
-                        />
-
-
-                    </Col>
-
                 </Row>
 
                 <Row gutter={20}>
