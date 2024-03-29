@@ -63,7 +63,7 @@ const Index = () => {
 
         const filterData = data?.result?.filter(
             (data) =>
-                data.userName.toLowerCase().includes(value.toLowerCase()));
+                data.fulName.toLowerCase().includes(value.toLowerCase()));
         setSearch(filterData);
     };
 

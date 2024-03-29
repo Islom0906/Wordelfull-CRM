@@ -177,7 +177,7 @@ const HousePostEdit = () => {
             imageId:fileListProps[0]?.uid
         };
         if (editHouseSuccess) {
-            putHouse({url: `/House?id=${editId}`, data});
+            putHouse({url: `/House`, data,id:editId});
         } else {
             postHouseMutate({url: "/House/", data});
         }
@@ -291,17 +291,6 @@ const HousePostEdit = () => {
 
 
                 <Row gutter={20}>
-
-                    <Col span={12}>
-                        <FormInput
-                            required={true}
-                            required_text={'Требуется название лота'}
-                            label={'Название лота'}
-                            name={'name'}
-                        />
-
-
-                    </Col>
                     <Col span={12}>
                         <Form.Item
                             label={'Выберите слот'}
@@ -323,6 +312,17 @@ const HousePostEdit = () => {
                             />
                         </Form.Item>
                     </Col>
+                    <Col span={12}>
+                        <FormInput
+                            required={true}
+                            required_text={'Требуется название дом'}
+                            label={'Название дом'}
+                            name={'name'}
+                        />
+
+
+                    </Col>
+
                 </Row>
 
                 <Row gutter={20}>

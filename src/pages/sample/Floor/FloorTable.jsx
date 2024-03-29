@@ -29,7 +29,7 @@ const FloorTable = ({data,deleteHandle}) => {
             title: 'Слот',
             dataIndex: 'house',
             id: 'house',
-            render: (text) => <p>{text?.slot}</p>,
+            render: (text) => <p>{text?.slot?.name}</p>,
         },
         {
             title: 'Дом',

@@ -1,4 +1,11 @@
 import {IoIosStats} from "react-icons/io";
+import {authRole} from "../shared/constants/AppEnums";
+import {FaBuilding, FaUserPlus} from "react-icons/fa";
+import {TbBuildingCastle} from "react-icons/tb";
+import {BsFillHouseDoorFill} from "react-icons/bs";
+import {MdOutlineApartment} from "react-icons/md";
+import {LiaMoneyCheckAltSolid} from "react-icons/lia";
+import {FiDollarSign} from "react-icons/fi";
 
 
 const routesConfig = [
@@ -15,55 +22,76 @@ const routesConfig = [
                 type: 'item',
                 icon: <IoIosStats/>,
                 path: '/pdf',
+                role:authRole.user
             },
             {
                 id: 'slot',
                 title: 'slot',
                 messageId: 'sidebar.sample.slot',
                 type: 'item',
-                icon: <IoIosStats/>,
+                icon: <MdOutlineApartment/>,
                 path: '/slot',
+                role:authRole.admin
             },
             {
                 id: 'house',
                 title: 'house',
                 messageId: 'sidebar.sample.house',
                 type: 'item',
-                icon: <IoIosStats/>,
+                icon: <FaBuilding />,
                 path: '/house',
+                role:authRole.admin
+
             },
             {
                 id: 'floor',
                 title: 'floor',
                 messageId: 'sidebar.sample.floor',
                 type: 'item',
-                icon: <IoIosStats/>,
+                icon: <TbBuildingCastle/>,
                 path: '/floor',
+                role:authRole.admin
+            },
+            {
+                id: 'apartment',
+                title: 'apartment',
+                messageId: 'sidebar.sample.apartment',
+                type: 'item',
+                icon: <BsFillHouseDoorFill/>,
+                path: '/apartment',
+                role:authRole.admin
+
             },
             {
                 id: 'payment',
                 title: 'payment',
                 messageId: 'sidebar.sample.payment',
                 type: 'item',
-                icon: <IoIosStats/>,
+                icon: <LiaMoneyCheckAltSolid/>,
                 path: '/payment',
+                role:authRole.admin
             },
             {
                 id: 'user',
                 title: 'user',
                 messageId: 'sidebar.sample.user',
                 type: 'item',
-                icon: <IoIosStats/>,
+                icon: <FaUserPlus/>,
                 path: '/user',
+                role:authRole.admin
+
             },
             {
                 id: 'course',
                 title: 'course',
                 messageId: 'sidebar.sample.course',
                 type: 'item',
-                icon: <IoIosStats/>,
+                icon: <FiDollarSign/>,
                 path: '/course',
+                role:authRole.admin
+
             },
+
         ],
     },
 ];

@@ -35,7 +35,7 @@ const FloorPostEdit = () => {
         },
     );
 
-    // query-slot-get
+    // query-house-get
     const {data: houseData, refetch: houseFetch} = useQuery(
         'get-house',
         () => apiService.getData(`/House?slotId=${slotId}`),
@@ -139,11 +139,11 @@ const FloorPostEdit = () => {
 
             const edit = {
                 name: editFloorData?.name,
-                slotId:editFloorData?.house?.slotId,
+                slotId:editFloorData?.house?.slot?.id,
                 houseId: editFloorData?.house?.id,
             }
 
-            setSlotId(editFloorData?.house?.slotId)
+            setSlotId(editFloorData?.house?.slot?.id)
             form.setFieldsValue(edit)
         }
 
@@ -240,16 +240,7 @@ const FloorPostEdit = () => {
 
                 <Row gutter={20}>
 
-                    <Col span={8}>
-                        <FormInput
-                            required={true}
-                            required_text={'Требуется название лота'}
-                            label={'Название лота'}
-                            name={'name'}
-                        />
 
-
-                    </Col>
                     <Col span={8}>
                         <Form.Item
                             label={'Выберите слот'}
@@ -292,6 +283,16 @@ const FloorPostEdit = () => {
                                 options={optionsHouse}
                             />
                         </Form.Item>
+                    </Col>
+                    <Col span={8}>
+                        <FormInput
+                            required={true}
+                            required_text={'Требуется название лота'}
+                            label={'Название лота'}
+                            name={'name'}
+                        />
+
+
                     </Col>
                 </Row>
 

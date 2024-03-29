@@ -40,7 +40,7 @@ const AppThemeSetting = () => {
   };
 
   return (
-    <div className='customizer-option' style={{display:'none'}}>
+    <div className='customizer-option' style={{display:'block'}}>
       <Button
         className='customizer-btn'
         onClick={() => setCustomizerStatus(!open)}>
