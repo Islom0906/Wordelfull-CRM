@@ -140,7 +140,7 @@ const AppartmentTable = ({data,deleteHandle,refetch}) => {
 
         },
         {
-            title: 'Action',
+            title: 'Событие',
             id: 'action',
             render: (_, record) => (
                 <Space size={20}>
@@ -148,14 +148,14 @@ const AppartmentTable = ({data,deleteHandle,refetch}) => {
                         onClick={() => Edit(record.id)}
                         type='primary'
                         icon={<EditOutlined />}>
-                        Edit
+                        Изменить
                     </Button>
                     <Popconfirm
                         title={'Are you sure to delete this task?'}
                         description={'Delete the task '}
                         onConfirm={() => Delete(record.id)}>
                         <Button type='danger' icon={<DeleteOutlined />}>
-                            Delete
+                            Удалить
                         </Button>
                     </Popconfirm>
                 </Space>
@@ -188,7 +188,7 @@ const AppartmentTable = ({data,deleteHandle,refetch}) => {
                             <Col span={24}>
                                 <Form.Item
                                     label={'Он активирован?'}
-                                    name={'activate'}
+                                    name={'status'}
                                     rules={[{
                                         required: true, message: 'Вы должны выбрать состояние'
                                     }]}

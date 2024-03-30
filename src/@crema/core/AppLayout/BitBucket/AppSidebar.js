@@ -40,7 +40,7 @@ const AppSidebar = ({visible, onClose}) => {
         <AppScrollbar
           className='app-BitBucket-sidebar-scrollbar'
           scrollToTop={false}>
-          <AppVerticalMenu />
+            <AppVerticalMenu />
         </AppScrollbar>
       </MainSidebar>
     );

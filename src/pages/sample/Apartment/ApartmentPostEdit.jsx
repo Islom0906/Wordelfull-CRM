@@ -500,7 +500,7 @@ const ApartmentPostEdit = () => {
                         <FormInputNumber
                             required={true}
                             required_text={'Требуется площадь'}
-                            label={'Площадь'}
+                            label={'Площадь (м²)'}
                             name={'size'}
                         />
                     </Col>
@@ -516,7 +516,7 @@ const ApartmentPostEdit = () => {
                         <FormInputNumber
                             required={true}
                             required_text={'Требуется стоимость номера'}
-                            label={'Стоимость номера'}
+                            label={'Стоимость номера ($)'}
                             name={'price'}
                         />
                     </Col>

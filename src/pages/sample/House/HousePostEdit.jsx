@@ -28,7 +28,7 @@ const HousePostEdit = () => {
 
 
     const [fileListProps, setFileListProps] = useState([]);
-
+    const [editImageId, setEditImageId] = useState(null)
     // query-slot-get
     const {data: slotData, refetch: slotFetch} = useQuery(
         'get-slot',
@@ -106,9 +106,27 @@ const HousePostEdit = () => {
         }
     });
 
-    const {mutate: imagesDeleteMutate} = useMutation(({url, ids}) => apiService.deleteImages(url, ids), {
-        onSuccess: () => message.success('Success'), onError: (error) => message.error(error.message)
+    const {
+        mutate: putImage,
+        isLoading: putImageLoading,
+        data: putImageData,
+        isSuccess: putImageSuccess
+    } = useMutation(({
+                         url, data, id
+                     }) => apiService.editData(url, data, id), {
+        onSuccess: () => {
+
+            message.success('Success')
+        },
+        onError: (error) => {
+            for (let obj in error.response.data) {
+                message.error(`${obj}: ${error.response.data[obj]}`)
+            }
+        }
     });
+    // const {mutate: imagesDeleteMutate} = useMutation(({url, ids}) => apiService.deleteImages(url, ids), {
+    //     onSuccess: () => message.success('Success'), onError: (error) => message.error(error.message)
+    // });
 
 
     //                                              =====useEffect====
@@ -211,31 +229,37 @@ const HousePostEdit = () => {
 
     // image
     useEffect(() => {
+        let imageData=putImageSuccess? putImageData:imagesUpload
         if (imagesUploadSuccess) {
             const uploadImg = [{
-                uid: imagesUpload?.id,
-                name: imagesUpload?.id,
+                uid: imageData?.id,
+                name: imageData?.id,
                 status: "done",
-                url: `${process.env.REACT_APP_IMAGE_URL}/${imagesUpload?.path}`
+                url: `${process.env.REACT_APP_IMAGE_URL}/${imageData?.path}`
             }]
             form.setFieldsValue({imageId: uploadImg});
             setFileListProps(uploadImg);
         }
-    }, [imagesUpload]);
+    }, [imagesUpload,putImageData]);
 
     const onChangeImage = ({fileList: newFileList}) => {
 
         const formData = new FormData();
         if (newFileList.length !== 0) {
             formData.append("fromFile", newFileList[0].originFileObj);
-            imagesUploadMutate({url: "/Image/", formData});
+            if (editHouseSuccess && editImageId) {
+                putImage({url: `/Image?id=${editImageId}`, data: formData})
+            } else {
+                imagesUploadMutate({url: "/Image/", formData});
+            }
         }
 
     };
 
     const handleRemoveImage = (file) => {
-        const ids =  file?.uid
-        imagesDeleteMutate({url: `/Image/${ids}`});
+        const ids = file?.uid
+        setEditImageId(ids)
+        // imagesDeleteMutate({url: `/Image/${ids}`});
         form.setFieldsValue({imageId: []});
         setFileListProps([])
 
@@ -270,7 +294,8 @@ const HousePostEdit = () => {
 
 
     return (<div>
-        {(postHouseLoading || editHouseLoading || putHouseLoading||imagesUploadLoading) ? <AppLoader/> :
+        {(postHouseLoading || editHouseLoading || putHouseLoading || imagesUploadLoading || putImageLoading) ?
+            <AppLoader/> :
             <Form
                 form={form}
                 name="basic"

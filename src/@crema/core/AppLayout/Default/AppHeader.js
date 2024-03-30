@@ -41,7 +41,7 @@ const AppHeader = ({isCollapsed, onToggleSidebar}) => {
         {/* <AppLanguageSwitcher /> */}
 
           <Tag
-
+                className={'course'}
               color={'#0014f6'}
           >{data?.price} $</Tag>
       </div>

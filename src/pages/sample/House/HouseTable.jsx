@@ -45,7 +45,7 @@ const HouseTable = ({data,deleteHandle}) => {
                 )},
         },
         {
-            title: 'Action',
+            title: 'Событие',
             id: 'action',
             render: (_, record) => (
                 <Space size={20}>
@@ -53,14 +53,14 @@ const HouseTable = ({data,deleteHandle}) => {
                         onClick={() => Edit(record.id)}
                         type='primary'
                         icon={<EditOutlined />}>
-                        Edit
+                        Изменить
                     </Button>
                     <Popconfirm
                         title={'Are you sure to delete this task?'}
                         description={'Delete the task '}
                         onConfirm={() => Delete(record.id)}>
                         <Button type='danger' icon={<DeleteOutlined />}>
-                            Delete
+                            Удалить
                         </Button>
                     </Popconfirm>
                 </Space>

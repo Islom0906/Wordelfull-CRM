@@ -7,6 +7,7 @@ import './index.style.less';
 import defaultConfig from '../../../../utility/AppContextProvider/defaultConfig';
 import {useSidebarContext} from '../../../../utility/AppContextProvider/SidebarContextProvider';
 import {MenuStyle} from '../../../../../shared/constants/AppEnums';
+import {useAuthUser} from "../../../../utility/AuthHooks";
 
 const AppVerticalNav = () => {
   const {menuStyle, sidebarColorSet} = useSidebarContext();
@@ -14,7 +15,9 @@ const AppVerticalNav = () => {
   const selectedKeys = pathname.substring(1).split('/');
   const defaultOpenKeys = selectedKeys[0];
   const [openKeys, setOpenKeys] = useState([defaultOpenKeys]);
+  const { user } = useAuthUser();
 
+  console.log(user)
   useEffect(() => {
     setOpenKeys([selectedKeys[selectedKeys.length - 2]]);
   }, []);
@@ -41,7 +44,7 @@ const AppVerticalNav = () => {
       openKeys={openKeys}
       onOpenChange={onOpenChange}
       selectedKeys={[selectedKeys[selectedKeys.length - 1]]}>
-      {getRouteMenus(selectedKeys)}
+      {getRouteMenus(selectedKeys,user)}
     </Menu>
   );
 };

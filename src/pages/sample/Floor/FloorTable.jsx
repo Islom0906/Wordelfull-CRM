@@ -38,7 +38,7 @@ const FloorTable = ({data,deleteHandle}) => {
             render: (text) => <p>{text?.name}</p>,
         },
         {
-            title: 'Action',
+            title: 'Событие',
             id: 'action',
             render: (_, record) => (
                 <Space size={20}>
@@ -46,14 +46,14 @@ const FloorTable = ({data,deleteHandle}) => {
                         onClick={() => Edit(record.id)}
                         type='primary'
                         icon={<EditOutlined />}>
-                        Edit
+                        Изменить
                     </Button>
                     <Popconfirm
                         title={'Are you sure to delete this task?'}
                         description={'Delete the task '}
                         onConfirm={() => Delete(record.id)}>
                         <Button type='danger' icon={<DeleteOutlined />}>
-                            Delete
+                            Удалить
                         </Button>
                     </Popconfirm>
                 </Space>

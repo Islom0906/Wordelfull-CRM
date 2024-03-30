@@ -1,8 +1,9 @@
 import React, {useEffect, useMemo, useState} from 'react';
-import {Col, Form, message, Row, Select, Space, Spin} from 'antd';
+import {Button, Col, Form, message, Row, Select, Space, Spin} from 'antd';
 import apiService from '../../../@crema/services/apis/api';
 import {useQuery} from 'react-query';
 import SellingTable from "./SellingTable";
+import {PiBroomFill} from "react-icons/pi";
 
 const Index = () => {
     const [form] = Form.useForm();
@@ -25,7 +26,7 @@ const Index = () => {
         },
     );
     // query-house-get
-    const {data: houseData, refetch: houseFetch} = useQuery(
+    const {data: houseData, refetch: houseFetch,remove:removeHouse} = useQuery(
         'get-house',
         () => apiService.getData(`/House?slotId=${filterId?.slotId}`),
         {
@@ -34,7 +35,7 @@ const Index = () => {
     );
 
     // query-floor-get
-    const {data: floorData, refetch: floorFetch} = useQuery(
+    const {data: floorData, refetch: floorFetch,remove:removeFloor} = useQuery(
         'get-floor',
         () => apiService.getData(`/Floor?housId=${filterId?.houseId}`),
         {
@@ -68,7 +69,7 @@ const Index = () => {
         }
     }, [filterId?.slotId]);
 
-    // refetch house
+    // refetch floor
     useEffect(() => {
         if (filterId?.houseId){
             floorFetch()
@@ -90,19 +91,19 @@ const Index = () => {
         return [
             {
                 value: '',
-                label: 'All',
-            },
-            {
-                value: 0,
-                label: 'Empty',
+                label: 'Все',
             },
             {
                 value: 1,
-                label: 'Busied',
+                label: 'Доступно',
             },
             {
                 value: 2,
-                label: 'Buyed',
+                label: 'Занято',
+            },
+            {
+                value: 3,
+                label: 'Продано',
             },
         ]
     }, []);
@@ -155,6 +156,19 @@ const Index = () => {
     }, [floorData]);
     const onChangeFloor=(id)=>{
         setFilterId(prevState => ({...prevState,floorId:id}))
+    }
+
+    // clear filter
+    const clearFiler=()=>{
+        form.setFieldsValue({slotId:null,houseId:null,floorId:null,status:""})
+        setFilterId({
+            slotId: null,
+            houseId: null,
+            floorId: null
+        })
+        setFilterStatus("")
+        removeHouse()
+        removeFloor()
     }
 
     return (
@@ -251,12 +265,25 @@ const Index = () => {
                         </Form.Item>
                     </Col>
                 </Row>
+
                 </Form>
+                <Row gutter={20}>
+                    <Col offset={18} span={6}>
+                        <Button
+                            type='dashed'
+                            icon={<PiBroomFill />}
+                            style={{width: '100%'}}
+                            onClick={clearFiler}>
+                            Очистка фильтра
+                        </Button>
+                    </Col>
+                </Row>
                 <Spin
                     size='medium'
                     spinning={getLoading}>
                     <SellingTable
                         data={apartmentData?.result}
+                        refetch={refetch}
                     />
                 </Spin>
             </Space>

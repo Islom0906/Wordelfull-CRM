@@ -5,7 +5,7 @@ import AppHeader from './AppHeader';
 import './index.style.less';
 import {AppContentView} from '../../../index';
 import AppThemeSetting from '../../AppThemeSetting';
-import AppFooter from '../components/AppFooter';
+// import AppFooter from '../components/AppFooter';
 import AppScrollbar from '../../AppScrollbar';
 import clsx from 'clsx';
 import {FooterType} from '../../../../shared/constants/AppEnums';
@@ -47,7 +47,7 @@ const Default = () => {
         />
         <AppScrollbar className='main-scrollbar' scrollToTop={false}>
           <AppContentView />
-          <AppFooter />
+          {/*<AppFooter />*/}
         </AppScrollbar>
       </Layout>
       <AppThemeSetting />

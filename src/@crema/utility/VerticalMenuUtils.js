@@ -1,6 +1,6 @@
 import {Link, useLocation} from 'react-router-dom';
 import {Menu} from 'antd';
-import React from 'react';
+import React, {Fragment} from 'react';
 import routesConfig from '../../pages/routeConfig';
 import {useIntl} from 'react-intl';
 import {useSidebarContext} from './AppContextProvider/SidebarContextProvider';
@@ -28,6 +28,8 @@ function getStyles(item, sidebarColorSet, isSidebarBgImage, index, isGroup) {
         : isSidebarBgImage
         ? ''
         : sidebarColorSet.sidebarBgColor,
+
+
     };
   }
 }
@@ -38,7 +40,7 @@ const renderMenuItemChildren = (item) => {
 
   if (path && path.includes('/'))
     return (
-      <Link to={path}>
+      <Link to={path} >
         {icon &&
           (React.isValidElement(icon) ? (
             <span className='ant-menu-item-icon'>{icon}</span>
@@ -67,29 +69,39 @@ const renderMenuItemChildren = (item) => {
   }
 };
 
-const renderMenuItem = (item, sidebarColorSet, isSidebarBgImage, index) => {
-  return item.type === 'collapse' ? (
-    <Menu.SubMenu
-      style={getStyles(item, sidebarColorSet, isSidebarBgImage, index, true)}
-      key={item.path ? item.path : item.id}
-      title={renderMenuItemChildren(item, sidebarColorSet, isSidebarBgImage)}>
-      {item.children.map((item) =>
-        renderMenuItem(item, sidebarColorSet, isSidebarBgImage, index + 1),
-      )}
-    </Menu.SubMenu>
-  ) : (
-    <Menu.Item
-      key={item.id}
-      style={getStyles(item, sidebarColorSet, isSidebarBgImage, index)}
-    >
-      {item.children
-        ? item.children
-        : renderMenuItemChildren(item, sidebarColorSet, isSidebarBgImage)}
-    </Menu.Item>
+
+const renderMenuItem = (item, sidebarColorSet, isSidebarBgImage, index,user) => {
+
+  const isAllowed =  item?.role === user?.role;
+  if (!isAllowed && !user?.role[1]) {
+    return null; // or any other appropriate action if not allowed
+  }
+
+  return (
+      <Fragment key={item.id}>
+        {item.type === 'collapse' ? (
+            <Menu.SubMenu
+                style={getStyles(item, sidebarColorSet, isSidebarBgImage, index, true)}
+                key={item.path || item.id}
+                title={renderMenuItemChildren(item, sidebarColorSet, isSidebarBgImage)}
+            >
+              {item.children.map((childItem) =>
+                  renderMenuItem(childItem, sidebarColorSet, isSidebarBgImage, index + 1)
+              )}
+            </Menu.SubMenu>
+        ) : (
+            <Menu.Item
+                key={item.id}
+                style={getStyles(item, sidebarColorSet, isSidebarBgImage, index)}
+            >
+              {item.children ? item.children : renderMenuItemChildren(item, sidebarColorSet, isSidebarBgImage)}
+            </Menu.Item>
+        )}
+      </Fragment>
   );
 };
 
-const renderMenu = (item, sidebarColorSet, isSidebarBgImage, index) => {
+const renderMenu = (item, sidebarColorSet, isSidebarBgImage, index,user) => {
   return item.type === 'group' ? (
     <Menu.ItemGroup
 
@@ -97,7 +109,7 @@ const renderMenu = (item, sidebarColorSet, isSidebarBgImage, index) => {
       key={item.path ? item.path : item.id}
       title={renderMenuItemChildren(item, sidebarColorSet, isSidebarBgImage)}>
       {item.children.map((item) =>
-        renderMenuItem(item, sidebarColorSet, isSidebarBgImage, index + 1),
+        renderMenuItem(item, sidebarColorSet, isSidebarBgImage, index + 1,user),
       )}
     </Menu.ItemGroup>
   ) : (
@@ -118,10 +130,10 @@ const renderMenu = (item, sidebarColorSet, isSidebarBgImage, index) => {
   );
 };
 
-export const getRouteMenus = () => {
+export const getRouteMenus = (_,user) => {
   const {sidebarColorSet} = useSidebarContext();
   const {isSidebarBgImage} = useSidebarContext();
   return routesConfig.map((route) =>
-    renderMenu(route, sidebarColorSet, isSidebarBgImage, 0),
+    renderMenu(route, sidebarColorSet, isSidebarBgImage, 0,user),
   );
 };

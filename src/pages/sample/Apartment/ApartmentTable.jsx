@@ -47,7 +47,7 @@ const ApartmentTable = ({data,deleteHandle}) => {
             title: 'Состояние номера',
             dataIndex: 'status',
             id: 'status',
-            render: (text) => <Tag color={text===0?"#0232f6":text===1 ?"#f5c306" :"#ff0000"}>{text===0?"Empty":text===1 ?"Busied" :"Buyed"}</Tag>,
+            render: (text) => <Tag color={text===1?"#0232f6":text===2 ?"#f5c306" :"#ff0000"}>{text===1?"Empty":text===2 ?"Busied" :"Buyed"}</Tag>,
         },
         {
             title: 'Изображение комнаты',
@@ -63,7 +63,7 @@ const ApartmentTable = ({data,deleteHandle}) => {
                 )},
         },
         {
-            title: 'Action',
+            title: 'Событие',
             id: 'action',
             render: (_, record) => (
                 <Space size={20}>
@@ -71,14 +71,14 @@ const ApartmentTable = ({data,deleteHandle}) => {
                         onClick={() => Edit(record.id)}
                         type='primary'
                         icon={<EditOutlined />}>
-                        Edit
+                        Изменить
                     </Button>
                     <Popconfirm
                         title={'Are you sure to delete this task?'}
                         description={'Delete the task '}
                         onConfirm={() => Delete(record.id)}>
                         <Button type='danger' icon={<DeleteOutlined />}>
-                            Delete
+                            Удалить
                         </Button>
                     </Popconfirm>
                 </Space>

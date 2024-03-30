@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import FloorTable from './FloorTable';
-import {Button, Col, Input, message, Row, Space, Spin} from 'antd';
+import {Button, Col, Form, Input, message, Row, Select, Space, Spin} from 'antd';
 import {PlusOutlined} from '@ant-design/icons';
 import {useNavigate} from 'react-router-dom';
 import apiService from '../../../@crema/services/apis/api';
@@ -9,8 +9,37 @@ import {EDIT_DATA} from '../../../shared/constants/ActionTypes';
 import {useDispatch} from 'react-redux';
 
 const Index = () => {
+  const [form] = Form.useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [filterId, setFilterId] = useState({
+    slotId:null,
+    houseId:null,
+  })
+
+
+
+
+  // query-slot-get
+  const {data: slotData, refetch: slotFetch} = useQuery(
+      'get-slot',
+      () => apiService.getData('/Slot'),
+      {
+        enabled: false,
+      },
+  );
+  // query-house-get
+  const {data: houseData, refetch: houseFetch} = useQuery(
+      'get-house',
+      () => apiService.getData(`/House?slotId=${filterId?.slotId}`),
+      {
+        enabled: false,
+      },
+  );
+
+
+
+
   const {
     mutate,
     isSuccess,
@@ -30,7 +59,7 @@ const Index = () => {
     data,
     isLoading: getNewsLoading,
     refetch,
-  } = useQuery('floor-get', () => apiService.getData('/Floor'), {
+  } = useQuery('floor-get', () => apiService.getData(`Floor?${filterId?.slotId ?`&SlotId=${filterId?.slotId}`:""}${filterId?.houseId ?`&housId=${filterId?.houseId}`:""}`), {
     // enabled:false,
     onError: (error) => {
 
@@ -44,11 +73,28 @@ const Index = () => {
     mutate({url, id});
   };
 
+
+  useEffect(() => {
+    slotFetch()
+  }, []);
+
+  // refetch house
+  useEffect(() => {
+    if (filterId?.slotId){
+      houseFetch()
+
+    }
+  }, [filterId?.slotId]);
+
   useEffect(() => {
     if (isSuccess) {
       refetch();
     }
   }, [isSuccess]);
+
+  useEffect(() => {
+    refetch()
+  }, [filterId]);
 
   const addArticle = () => {
     dispatch({type: EDIT_DATA, payload: ''});
@@ -70,6 +116,40 @@ const Index = () => {
     setSearch(filterData);
   };
 
+  // option slot
+  const optionsSlot = useMemo(() => {
+    return slotData?.result?.map((option) => {
+      return {
+        value: option?.id,
+        label: option?.name,
+      };
+    });
+  }, [slotData]);
+
+
+  const onChangeSlot=(id)=>{
+    form.setFieldsValue({houseId:null})
+    setFilterId({
+      slotId: id,
+      houseId: null,
+    })
+  }
+
+
+  // option house
+  const optionsHouse = useMemo(() => {
+    return houseData?.result?.map((option) => {
+      return {
+        value: option?.id,
+        label: option?.name,
+      };
+    });
+  }, [houseData]);
+  const onChangeHouse=(id)=>{
+    form.setFieldsValue({floorId:null})
+    setFilterId(prevState => ({...prevState,houseId:id}))
+  }
+
   return (
       <div className={'site-space-compact-wrapper'}>
         <Space direction={'vertical'} style={{width: '100%'}}>
@@ -83,10 +163,66 @@ const Index = () => {
                   icon={<PlusOutlined />}
                   style={{width: '100%'}}
                   onClick={addArticle}>
-                Add
+                Добавить
               </Button>
             </Col>
           </Row>
+          <Form
+              form={form}
+              name="basic"
+              labelCol={{
+                span: 24
+              }}
+              wrapperCol={{
+                span: 24
+              }}
+              style={{
+                maxWidth: "100%"
+              }}
+              autoComplete="off"
+          >
+            <Row gutter={20}>
+              <Col span={6}>
+                <Form.Item
+                    label={'Выберите слот'}
+                    name={'slotId'}
+
+                    wrapperCol={{
+                      span: 24,
+                    }}
+                >
+                  <Select
+                      style={{
+                        width: '100%',
+                      }}
+                      optionLabelProp='label'
+                      onChange={onChangeSlot}
+                      options={optionsSlot}
+                      placeholder={'Поиск по слотам'}
+                  />
+                </Form.Item>
+              </Col>
+              <Col span={6}>
+                <Form.Item
+                    label={'Выберите дом'}
+                    name={'houseId'}
+                    wrapperCol={{
+                      span: 24,
+                    }}
+                >
+                  <Select
+                      style={{
+                        width: '100%',
+                      }}
+                      optionLabelProp='label'
+                      onChange={onChangeHouse}
+                      options={optionsHouse}
+                      placeholder={'Поиск по домам'}
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+          </Form>
           <Spin
               size='medium'
               spinning={getNewsLoading || deleteNewsLoading}>

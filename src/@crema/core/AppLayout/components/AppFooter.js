@@ -11,7 +11,12 @@ const AppFooter = () => {
   if (!footer) {
     return (
       <Footer className='app-main-footer'>
-        <p>Created by: <a  href="https://abduganiev.uz/"><b> Abduganiev Technology</b></a> </p>
+        <p style={{display:"flex",alignItems:"center", gap:"10px"}}>
+          Created by: <a rel={"noreferrer"} target={'_blank'} href="https://abduganiev.uz/">
+          <img src={'/admin/logo-a.png'} alt={'abdugainev logo'} style={{width:'30px',height:"30px", objectFit:'contain'}}/>
+        </a>
+        </p>
+
         {/* <div className='footer-btn-view'>
           <Button type='link' className='footer-btn' color='primary'>
             Buy Now

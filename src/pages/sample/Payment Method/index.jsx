@@ -82,7 +82,7 @@ const Index = () => {
                   icon={<PlusOutlined />}
                   style={{width: '100%'}}
                   onClick={addArticle}>
-                Add
+                Добавить
               </Button>
             </Col>
           </Row>

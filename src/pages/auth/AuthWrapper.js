@@ -24,7 +24,7 @@ const AuthWrapper = ({children}) => {
           </div>
           <div className='auth-wel-action'>
             <div className='auth-wel-content'>
-              <h2>Welcome to Wonderful CRM</h2>
+              <img src="/admin/login-page.jpg" alt="login-page"/>
               
             </div>
           </div>

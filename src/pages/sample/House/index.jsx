@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import HouseTable from './HouseTable';
-import {Button, Col, Input, message, Row, Space, Spin} from 'antd';
+import {Button, Col,  Input, message, Row, Select, Space, Spin} from 'antd';
 import {PlusOutlined} from '@ant-design/icons';
 import {useNavigate} from 'react-router-dom';
 import apiService from '../../../@crema/services/apis/api';
@@ -11,6 +11,19 @@ import {useDispatch} from 'react-redux';
 const Index = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+
+  const [slotId, setSlotId] = useState(null)
+
+  // query-slot-get
+  const {data: slotData, refetch: slotFetch} = useQuery(
+      'get-slot',
+      () => apiService.getData('/Slot'),
+      {
+        enabled: false,
+      },
+  );
+
   const {
     mutate,
     isSuccess,
@@ -30,7 +43,7 @@ const Index = () => {
     data,
     isLoading: getNewsLoading,
     refetch,
-  } = useQuery('house-get', () => apiService.getData('/House'), {
+  } = useQuery('house-get', () => apiService.getData(`/House${slotId ? `?slotId=${slotId}`:""}`), {
     // enabled:false,
     onError: (error) => {
 
@@ -44,11 +57,23 @@ const Index = () => {
     mutate({url, id});
   };
 
+  // slot fetch
+  useEffect(() => {
+    slotFetch()
+  }, []);
+
+
   useEffect(() => {
     if (isSuccess) {
       refetch();
     }
   }, [isSuccess]);
+
+  useEffect(() => {
+    if (slotId){
+      refetch();
+    }
+  }, [slotId]);
 
   const addArticle = () => {
     dispatch({type: EDIT_DATA, payload: ''});
@@ -67,10 +92,29 @@ const Index = () => {
     setSearch(filterData);
   };
 
+
+  // option slot
+  const optionsSlot = useMemo(() => {
+    return slotData?.result?.map((option) => {
+      return {
+        value: option?.id,
+        label: option?.name,
+      };
+    });
+  }, [slotData]);
+
+
+  const onChangeSlot=(id)=>{
+    setSlotId(id)
+  }
+
+
   return (
       <div className={'site-space-compact-wrapper'}>
         <Space direction={'vertical'} style={{width: '100%'}}>
           <Row gutter={20}>
+
+
             <Col span={16}>
               <Input onChange={(e) => serachFunc(e.target.value)} />
             </Col>
@@ -80,8 +124,20 @@ const Index = () => {
                   icon={<PlusOutlined />}
                   style={{width: '100%'}}
                   onClick={addArticle}>
-                Add
+                Добавить
               </Button>
+            </Col>
+            <Col span={10}>
+
+              <Select
+                  style={{
+                    width: '100%',
+                  }}
+                  optionLabelProp='label'
+                  onChange={onChangeSlot}
+                  options={optionsSlot}
+                  placeholder={"Поиск по слотам"}
+              />
             </Col>
           </Row>
           <Spin

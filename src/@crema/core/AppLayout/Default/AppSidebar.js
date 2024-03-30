@@ -7,28 +7,33 @@ import clsx from 'clsx';
 import AppVerticalMenu from '../components/AppVerticalNav';
 import {useSidebarContext} from '../../../utility/AppContextProvider/SidebarContextProvider';
 import MainSidebar from '../components/MainSidebar';
+import {Space} from "antd";
+import AppFooter from "../components/AppFooter";
 
 const AppSidebar = ({isCollapsed}) => {
-  const {isSidebarBgImage} = useSidebarContext();
+    const {isSidebarBgImage} = useSidebarContext();
 
-  return (
-    <MainSidebar
-      className={clsx('app-main-sidebar', {
-        'sidebar-img-background': isSidebarBgImage,
-      })}
-      collapsible
-      breakpoint='xl'
-      collapsed={isCollapsed}>
-      <UserInfo hasColor />
-      <AppScrollbar className='app-sidebar-scrollbar' scrollToTop={false}>
-        <AppVerticalMenu />
-      </AppScrollbar>
-    </MainSidebar>
-  );
+    return (
+        <MainSidebar
+            className={clsx('app-main-sidebar', {
+                'sidebar-img-background': isSidebarBgImage,
+            })}
+            collapsible
+            breakpoint='xl'
+            collapsed={isCollapsed}>
+            <UserInfo hasColor/>
+            <AppScrollbar className='app-sidebar-scrollbar' scrollToTop={false}>
+                <Space direction={"vertical"} style={{height:"100%",justifyContent:"space-between"}}>
+                    <AppVerticalMenu/>
+                    <AppFooter/>
+                </Space>
+            </AppScrollbar>
+        </MainSidebar>
+    );
 };
 
 export default AppSidebar;
 
 AppSidebar.propTypes = {
-  isCollapsed: PropTypes.bool,
+    isCollapsed: PropTypes.bool,
 };

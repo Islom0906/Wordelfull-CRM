@@ -2,6 +2,10 @@
 @import '../../../../../shared/styles/mixin';
 
 // Sidebar Menu
+
+.ant-menu-title-content{
+  transition: all 0s !important;
+}
 .app-main-sidebar-menu {
   padding-top: 8px;
   padding-bottom: 8px;
@@ -34,7 +38,7 @@
     padding-left: 30px !important;
     padding-right: 12px;
 
-    .transition(all .3s ease);
+    //.transition(all 0.3s ease);
 
     [dir=rtl] & {
       padding-left: 12px !important;
@@ -49,15 +53,17 @@
     margin-left: 16px;
     font-size: 16px;
     font-weight: bold;
+
     [dir=rtl] & {
       margin-left: 0;
       margin-right: 16px;
     }
   }
 
-  & .ant-menu-item .ant-menu-item-icon{
+  & .ant-menu-item .ant-menu-item-icon {
     font-size: 20px;
   }
+
 
   & .ant-menu-submenu .ant-menu-submenu-title,
   & .ant-menu-submenu-title > .ant-menu-title-content,
@@ -552,7 +558,7 @@
     }
   }
 
-  &  .ant-menu-sub.ant-menu-inline > .ant-menu-item,
+  & .ant-menu-sub.ant-menu-inline > .ant-menu-item,
   & .ant-menu-sub.ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title {
     padding-left: 60px !important;
 

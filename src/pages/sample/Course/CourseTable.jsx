@@ -79,7 +79,7 @@ const CourseTable = ({data, refetch}) => {
             render: (text) => <p>{text}</p>,
         },
         {
-            title: 'Action',
+            title: 'Событие',
             id: 'action',
             render: (_, record) => (
                 <Space size={20}>
