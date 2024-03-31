@@ -2006,25 +2006,25 @@
     fontkit "^2.0.2"
     is-url "^1.2.4"
 
-"@react-pdf/image@^2.3.5":
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/@react-pdf/image/-/image-2.3.5.tgz#340e2bbcdf345c373a440729fc1c0e8a070307c4"
-  integrity sha512-YK8oeD4cYTbX2KwdsY5DEDpvsKQoGbf3kwlxAQwYm8wrEol8V/5oCl8H8ZqdZIYQhx2XPp63cocQfMCZGwf+4w==
+"@react-pdf/image@^2.3.6":
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/@react-pdf/image/-/image-2.3.6.tgz#72444842517f8b0c08bbf4c216d8b41110498d16"
+  integrity sha512-7iZDYZrZlJqNzS6huNl2XdMcLFUo68e6mOdzQeJ63d5eApdthhSHBnkGzHfLhH5t8DCpZNtClmklzuLL63ADfw==
   dependencies:
     "@babel/runtime" "^7.20.13"
     "@react-pdf/png-js" "^2.3.1"
     cross-fetch "^3.1.5"
-    jay-peg "^1.0.1"
+    jay-peg "^1.0.2"
 
-"@react-pdf/layout@^3.11.3":
-  version "3.11.3"
-  resolved "https://registry.yarnpkg.com/@react-pdf/layout/-/layout-3.11.3.tgz#5ec26f399d3956af4b5e65c38fe1591384770c04"
-  integrity sha512-SwfIWmZl3yZDgb4Qa9ebjAZTd/FyI5E2curSfra6SuAkrsEF037cmVfxCTgYCkPwpVMv/omOENPI+WjhOKPofA==
+"@react-pdf/layout@^3.11.5":
+  version "3.11.5"
+  resolved "https://registry.yarnpkg.com/@react-pdf/layout/-/layout-3.11.5.tgz#c1caf04e8f58dbecde56ffed7fd5a56d63f3683c"
+  integrity sha512-VLOzWIODUKw0ZTrS9XDkwl3q1OHKG8qd6OyCZZ7Q8/SijAh9ho70HEc/f1ffBFmM0nGrKMG0M3L0/7z1XKmOGw==
   dependencies:
     "@babel/runtime" "^7.20.13"
     "@react-pdf/fns" "2.2.1"
-    "@react-pdf/image" "^2.3.5"
-    "@react-pdf/pdfkit" "^3.1.7"
+    "@react-pdf/image" "^2.3.6"
+    "@react-pdf/pdfkit" "^3.1.9"
     "@react-pdf/primitives" "^3.1.1"
     "@react-pdf/stylesheet" "^4.2.4"
     "@react-pdf/textkit" "^4.4.1"
@@ -2034,17 +2034,17 @@
     queue "^6.0.1"
     yoga-layout "^2.0.1"
 
-"@react-pdf/pdfkit@^3.1.7":
-  version "3.1.7"
-  resolved "https://registry.yarnpkg.com/@react-pdf/pdfkit/-/pdfkit-3.1.7.tgz#a6eb7f623a844f54238f1c45484715e9561ba34a"
-  integrity sha512-iXMmATqW5Aycpzm8nNsZOHV/DX2lpd8l5VkaTy1HjzHgQ3MHoV45BHwRph53soEqoPo7rUfpjuSi7X3hngPWGA==
+"@react-pdf/pdfkit@^3.1.9":
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/@react-pdf/pdfkit/-/pdfkit-3.1.9.tgz#c6af1ec6880668404fa927dfe66118bafa50a54c"
+  integrity sha512-9ZPF9gGkBWLcEc+HMkbJ5bHsxenej5Kz9YWWs10EeS8d5v6UF027Ffl+75HXZmgiO5iLVONTYj06LnyYZ95XMQ==
   dependencies:
     "@babel/runtime" "^7.20.13"
     "@react-pdf/png-js" "^2.3.1"
     browserify-zlib "^0.2.0"
     crypto-js "^4.2.0"
     fontkit "^2.0.2"
-    jay-peg "^1.0.1"
+    jay-peg "^1.0.2"
     vite-compatible-readable-stream "^3.6.1"
 
 "@react-pdf/png-js@^2.3.1":
@@ -2075,15 +2075,15 @@
     parse-svg-path "^0.1.2"
     svg-arc-to-cubic-bezier "^3.2.0"
 
-"@react-pdf/renderer@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@react-pdf/renderer/-/renderer-3.4.0.tgz#86e2313a3ed634cf4fdfa9aaadbefbec6886f4b5"
-  integrity sha512-8i/B8xJZ4AwINM/RRBnawBXfNACaehQT/bM19TOTUjHoddYaRKM1g1+qOZx58yfxfr5TFRs4fORxEPU1mGmR1A==
+"@react-pdf/renderer@^3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@react-pdf/renderer/-/renderer-3.4.2.tgz#f13f7d291a1af108ed543c38c2efb86a4afb9f21"
+  integrity sha512-YNwioiN97SOqEdCskfixsru+Y7hHbUjyayYFALKwWiAnoTOckfpacfGyIgXZXtZiwPYwnSGYTaJRxpjC7seCkA==
   dependencies:
     "@babel/runtime" "^7.20.13"
     "@react-pdf/font" "^2.4.4"
-    "@react-pdf/layout" "^3.11.3"
-    "@react-pdf/pdfkit" "^3.1.7"
+    "@react-pdf/layout" "^3.11.5"
+    "@react-pdf/pdfkit" "^3.1.9"
     "@react-pdf/primitives" "^3.1.1"
     "@react-pdf/render" "^3.4.3"
     "@react-pdf/types" "^2.4.1"
@@ -5790,6 +5790,11 @@ file-loader@^6.2.0:
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
 
+file-saver@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.5.tgz#d61cfe2ce059f414d899e9dd6d4107ee25670c38"
+  integrity sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==
+
 file-selector@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/file-selector/-/file-selector-0.6.0.tgz#fa0a8d9007b829504db4d07dd4de0310b65287dc"
@@ -7023,10 +7028,10 @@ jake@^10.8.5:
     filelist "^1.0.4"
     minimatch "^3.1.2"
 
-jay-peg@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/jay-peg/-/jay-peg-1.0.1.tgz#f09b8615886cb1ce61c364c16e203f566eeaa779"
-  integrity sha512-zBfjkGbuuNXk8JW+rEePpPEbRRjupS8q+5yPak7kjy3e2GvvNwsLle9okEFvfGyZA6HvtSSiYrVd1/jgnYebaQ==
+jay-peg@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/jay-peg/-/jay-peg-1.0.2.tgz#17a54d386e472f5f313f3d6e88770b170ea569f4"
+  integrity sha512-fyV3NVvv6pTys/3BTapBUGAWAuU9rM2gRcgijZHzptd5KKL+s+S7hESFN+wOsbDH1MzFwdlRAXi0aGxS6uiMKg==
   dependencies:
     restructure "^3.0.0"
 

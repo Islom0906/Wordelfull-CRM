@@ -87,7 +87,6 @@ const Orders = () => {
               columns={columns}
               expandable={{
                 expandedRowRender: (record) => {
-                  console.log(record.order)
                   return (
                       <Table
                           columns={columnsOrders}

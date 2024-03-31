@@ -71,8 +71,7 @@ const renderMenuItemChildren = (item) => {
 
 
 const renderMenuItem = (item, sidebarColorSet, isSidebarBgImage, index,user) => {
-
-  const isAllowed =  item?.role === user?.role;
+  const isAllowed = !user?.role[1]&& item?.role === user?.role;
   if (!isAllowed && !user?.role[1]) {
     return null; // or any other appropriate action if not allowed
   }

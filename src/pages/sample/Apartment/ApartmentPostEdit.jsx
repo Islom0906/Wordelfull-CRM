@@ -39,7 +39,8 @@ const ApartmentPostEdit = () => {
     const [isUpload, setIsUpload] = useState('');
     const [slotId, setSlotId] = useState(null)
     const [houseId, setHouseId] = useState(null)
-
+    const [editFloorId, setEditImageFloorId] = useState(null)
+    const [editImageAparmentId, setEditImageApartmentId] = useState(null)
 
 
     // query-slot-get
@@ -135,8 +136,23 @@ const ApartmentPostEdit = () => {
         }
     });
 
-    const {mutate: imagesDeleteMutate} = useMutation(({url, ids}) => apiService.deleteImages(url, ids), {
-        onSuccess: () => message.success('Success'), onError: (error) => message.error(error.message)
+    const {
+        mutate: putImage,
+        isLoading: putImageLoading,
+        data: putImageData,
+        isSuccess: putImageSuccess
+    } = useMutation(({
+                         url, data, id
+                     }) => apiService.editData(url, data, id), {
+        onSuccess: () => {
+
+            message.success('Success')
+        },
+        onError: (error) => {
+            for (let obj in error.response.data) {
+                message.error(`${obj}: ${error.response.data[obj]}`)
+            }
+        }
     });
 
 
@@ -274,31 +290,37 @@ const ApartmentPostEdit = () => {
 
     // image
     useEffect(() => {
+
+        let imageData=putImageSuccess? putImageData:imagesUpload
+
         // floor
-        if (imagesUploadSuccess&&isUpload==='floor') {
+        if ((putImageSuccess||imagesUploadSuccess) && isUpload==='floor') {
             const uploadImg = [{
-                uid: imagesUpload?.id,
-                name: imagesUpload?.id,
+                uid: imageData?.id,
+                name: imageData?.id,
                 status: "done",
-                url: `${process.env.REACT_APP_IMAGE_URL}/${imagesUpload?.path}`
+                url: `${process.env.REACT_APP_IMAGE_URL}/${imageData?.path}`
             }]
             form.setFieldsValue({florImageId: uploadImg});
             setFileListPropsFloor(uploadImg);
             setIsUpload("")
+
         }
         // apartment
-        if (imagesUploadSuccess&&isUpload==='apartment') {
+        if ((putImageSuccess||imagesUploadSuccess) && isUpload==='apartment') {
             const uploadImg = [{
-                uid: imagesUpload?.id,
-                name: imagesUpload?.id,
+                uid: imageData?.id,
+                name: imageData?.id,
                 status: "done",
-                url: `${process.env.REACT_APP_IMAGE_URL}/${imagesUpload?.path}`
+                url: `${process.env.REACT_APP_IMAGE_URL}/${imageData?.path}`
             }]
             form.setFieldsValue({homeImageId: uploadImg});
             setFileListPropsApartment(uploadImg);
             setIsUpload("")
+
+
         }
-    }, [imagesUpload]);
+    }, [imagesUpload,putImageData]);
 
     // floor
     const onChangeImageFloor = ({fileList: newFileList}) => {
@@ -306,7 +328,11 @@ const ApartmentPostEdit = () => {
         const formData = new FormData();
         if (newFileList.length !== 0) {
             formData.append("fromFile", newFileList[0].originFileObj);
+            if (editApartmentSuccess && editFloorId){
+                putImage({url: `/Image`, data: formData,id:editFloorId})
+            }else{
             imagesUploadMutate({url: "/Image/", formData});
+            }
             setIsUpload("floor")
 
         }
@@ -315,8 +341,8 @@ const ApartmentPostEdit = () => {
 
     const handleRemoveImageFloor = (file) => {
         const ids =  file?.uid
-        imagesDeleteMutate({url: `/Image/${ids}`});
-        form.setFieldsValue({imageId: []});
+        setEditImageFloorId(ids)
+        form.setFieldsValue({florImageId: []});
         setFileListPropsFloor([])
 
     }
@@ -328,7 +354,11 @@ const ApartmentPostEdit = () => {
         const formData = new FormData();
         if (newFileList.length !== 0) {
             formData.append("fromFile", newFileList[0].originFileObj);
+            if (editApartmentSuccess&&editImageAparmentId){
+                putImage({url: `/Image`, data: formData,id:editImageAparmentId})
+            }else{
             imagesUploadMutate({url: "/Image/", formData});
+            }
             setIsUpload("apartment")
         }
 
@@ -336,9 +366,9 @@ const ApartmentPostEdit = () => {
 
     const handleRemoveImageApartment = (file) => {
         const ids =  file?.uid
-        imagesDeleteMutate({url: `/Image/${ids}`});
-        form.setFieldsValue({imageId: []});
-        setFileListPropsFloor([])
+        setEditImageApartmentId(ids)
+        form.setFieldsValue({homeImageId: []});
+        setFileListPropsApartment([])
 
     }
 
@@ -398,7 +428,7 @@ const ApartmentPostEdit = () => {
     }, [floorData]);
 
     return (<div>
-        {(postApartmentLoading || editApartmentLoading || putApartmentLoading||imagesUploadLoading) ? <AppLoader/> :
+        {(postApartmentLoading || editApartmentLoading || putApartmentLoading||imagesUploadLoading||putImageLoading) ? <AppLoader/> :
             <Form
                 form={form}
                 name="basic"

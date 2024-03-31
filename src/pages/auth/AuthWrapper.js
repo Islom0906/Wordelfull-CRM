@@ -24,7 +24,7 @@ const AuthWrapper = ({children}) => {
           </div>
           <div className='auth-wel-action'>
             <div className='auth-wel-content'>
-              <img src="/admin/login-page.jpg" alt="login-page"/>
+              <img src="/login-page.jpg" alt="login-page"/>
               
             </div>
           </div>

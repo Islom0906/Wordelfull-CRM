@@ -29,6 +29,10 @@ const HousePostEdit = () => {
 
     const [fileListProps, setFileListProps] = useState([]);
     const [editImageId, setEditImageId] = useState(null)
+
+
+
+
     // query-slot-get
     const {data: slotData, refetch: slotFetch} = useQuery(
         'get-slot',
@@ -124,9 +128,6 @@ const HousePostEdit = () => {
             }
         }
     });
-    // const {mutate: imagesDeleteMutate} = useMutation(({url, ids}) => apiService.deleteImages(url, ids), {
-    //     onSuccess: () => message.success('Success'), onError: (error) => message.error(error.message)
-    // });
 
 
     //                                              =====useEffect====
@@ -230,7 +231,7 @@ const HousePostEdit = () => {
     // image
     useEffect(() => {
         let imageData=putImageSuccess? putImageData:imagesUpload
-        if (imagesUploadSuccess) {
+        if (imagesUploadSuccess||putImageSuccess) {
             const uploadImg = [{
                 uid: imageData?.id,
                 name: imageData?.id,
@@ -248,7 +249,7 @@ const HousePostEdit = () => {
         if (newFileList.length !== 0) {
             formData.append("fromFile", newFileList[0].originFileObj);
             if (editHouseSuccess && editImageId) {
-                putImage({url: `/Image?id=${editImageId}`, data: formData})
+                putImage({url: `/Image`, data: formData,id:editImageId})
             } else {
                 imagesUploadMutate({url: "/Image/", formData});
             }
@@ -259,7 +260,6 @@ const HousePostEdit = () => {
     const handleRemoveImage = (file) => {
         const ids = file?.uid
         setEditImageId(ids)
-        // imagesDeleteMutate({url: `/Image/${ids}`});
         form.setFieldsValue({imageId: []});
         setFileListProps([])
 

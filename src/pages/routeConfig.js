@@ -15,15 +15,15 @@ const routesConfig = [
         messageId: 'sidebar.sample',
         type: 'group',
         children: [
-            {
-                id: 'pdf',
-                title: 'pdf',
-                messageId: 'sidebar.sample.pdf',
-                type: 'item',
-                icon: <IoIosStats/>,
-                path: '/pdf',
-                role:authRole.user
-            },
+            // {
+            //     id: 'pdf',
+            //     title: 'pdf',
+            //     messageId: 'sidebar.sample.pdf',
+            //     type: 'item',
+            //     icon: <IoIosStats/>,
+            //     path: '/pdf',
+            //     role:authRole.user
+            // },
             {
                 id: 'selling',
                 title: 'selling',
@@ -78,7 +78,7 @@ const routesConfig = [
                 type: 'item',
                 icon: <LiaMoneyCheckAltSolid/>,
                 path: '/payment',
-                role:authRole.admin
+                role:authRole.user
             },
             {
                 id: 'user',

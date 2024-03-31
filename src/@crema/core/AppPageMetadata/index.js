@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const SITE_URL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
-    : 'https://admin.tashkentmarket.ae/';
+    : '';
 
 const FACEBOOK_APP_ID = 'XXXXXXXXX';
 

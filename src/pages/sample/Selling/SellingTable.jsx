@@ -10,7 +10,7 @@ import {EditOutlined} from "@ant-design/icons";
 const initialValueForm = {
     status: null,
 };
-const SellingTable = ({data,refetch}) => {
+const SellingTable = ({data,refetch,setPdfId}) => {
 
     const [form] = Form.useForm();
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,7 +35,7 @@ const SellingTable = ({data,refetch}) => {
     });
 
     const CreatePDF = (id) => {
-        console.log(id)
+        setPdfId(id)
     };
 
     // status edit
@@ -158,6 +158,7 @@ const SellingTable = ({data,refetch}) => {
             render: (_, record) => (
                 <Space size={20}>
                     <Button
+                        disabled={record.status!==1}
                         onClick={() => CreatePDF(record.id)}
                         type='outline'
                         icon={<FaFilePdf/>}>
@@ -230,7 +231,8 @@ const SellingTable = ({data,refetch}) => {
 
 SellingTable.propTypes = {
     data: PropTypes.array,
-    refetch:PropTypes.func
+    refetch:PropTypes.func,
+    setPdfId:PropTypes.func
 }
 
 export default SellingTable;

@@ -8,6 +8,7 @@ import defaultConfig from '../../../../utility/AppContextProvider/defaultConfig'
 import {useSidebarContext} from '../../../../utility/AppContextProvider/SidebarContextProvider';
 import {MenuStyle} from '../../../../../shared/constants/AppEnums';
 import {useAuthUser} from "../../../../utility/AuthHooks";
+// import {useAuthUser} from "../../../../utility/AuthHooks";
 
 const AppVerticalNav = () => {
   const {menuStyle, sidebarColorSet} = useSidebarContext();
@@ -17,7 +18,10 @@ const AppVerticalNav = () => {
   const [openKeys, setOpenKeys] = useState([defaultOpenKeys]);
   const { user } = useAuthUser();
 
-  console.log(user)
+  // const user={
+  //   role:['user','admin']
+  // }
+
   useEffect(() => {
     setOpenKeys([selectedKeys[selectedKeys.length - 2]]);
   }, []);

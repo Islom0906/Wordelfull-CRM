@@ -4,7 +4,9 @@ import apiService from '../../../@crema/services/apis/api';
 import {useQuery} from 'react-query';
 import SellingTable from "./SellingTable";
 import {PiBroomFill} from "react-icons/pi";
-
+import {pdf} from "@react-pdf/renderer";
+import CreatPDF from "./creat-PDF";
+import {saveAs} from 'file-saver'
 const Index = () => {
     const [form] = Form.useForm();
     const [filterStatus, setFilterStatus] = useState("")
@@ -13,8 +15,17 @@ const Index = () => {
         houseId:null,
         floorId:null
     })
+    const [pdfId, setPdfId] = useState(null)
 
 
+    // create pdf
+    const {data:pdfData, refetch:pdfFeatch,isSuccess} = useQuery(
+        'get-pdf',
+        () => apiService.getDataByID('/PdfData',pdfId),
+        {
+            enabled: false,
+        },
+    );
 
 
     // query-slot-get
@@ -58,6 +69,27 @@ const Index = () => {
     });
 
 
+    useEffect(() => {
+
+        if (isSuccess){
+            pdf(<CreatPDF data={pdfData}/>)
+                .toBlob()
+                .then(blob => {
+                    // Handle the generated PDF blob here (e.g., you can initiate a download)
+                    // For simplicity, let's log the blob URL
+                    saveAs(blob,'Wonderfull-city.pdf')
+                    console.log(blob);
+                });
+        }
+    }, [pdfData]);
+
+    useEffect(() => {
+        if (pdfId){
+            pdfFeatch()
+        }
+    }, [pdfId]);
+
+    // slot fetch
     useEffect(() => {
         slotFetch()
     }, []);
@@ -284,6 +316,7 @@ const Index = () => {
                     <SellingTable
                         data={apartmentData?.result}
                         refetch={refetch}
+                        setPdfId={setPdfId}
                     />
                 </Spin>
             </Space>
