@@ -5,6 +5,8 @@ import AppAnimateGroup from '../../@crema/core/AppAnimateGroup';
 import './AuthWrapper.style.less';
 import {AppInfoView} from '../../@crema';
 import AppLogo from '../../@crema/core/AppLayout/components/AppLogo';
+import loginPage from '../../assets/login-page.jpg'
+
 
 const AuthWrapper = ({children}) => {
   return (
@@ -24,7 +26,7 @@ const AuthWrapper = ({children}) => {
           </div>
           <div className='auth-wel-action'>
             <div className='auth-wel-content'>
-              <img src="/login-page.jpg" alt="login-page"/>
+              <img src={loginPage} alt="login-page"/>
               
             </div>
           </div>
