@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout} from 'antd';
 import './AppFooter.style.less';
 import {useLayoutContext} from '../../../utility/AppContextProvider/LayoutContextProvider';
-
+import logoFooter from '../../../../assets/logo-a.png'
 const {Footer} = Layout;
 
 const AppFooter = () => {
@@ -13,7 +13,7 @@ const AppFooter = () => {
       <Footer className='app-main-footer'>
         <p style={{display:"flex",alignItems:"center", gap:"10px"}}>
           Created by: <a rel={"noreferrer"} target={'_blank'} href="https://abduganiev.uz/">
-          <img src={'/logo-a.png'} alt={'abdugainev logo'} style={{width:'30px',height:"30px", objectFit:'contain'}}/>
+          <img src={logoFooter} alt={'abdugainev logo'} style={{width:'30px',height:"30px", objectFit:'contain'}}/>
         </a>
         </p>
 

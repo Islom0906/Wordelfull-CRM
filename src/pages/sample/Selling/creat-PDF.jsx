@@ -5,7 +5,9 @@ import MontserratBold from '../../../assets/fonts/Montserrat-Bold.ttf'
 import MontserratSemiBold from '../../../assets/fonts/Montserrat-SemiBold.ttf'
 import MontserratMedium from '../../../assets/fonts/Montserrat-Medium.ttf'
 import moment from "moment";
-
+import logo from '../../../assets/logo.png'
+import location from '../../../assets/location-crm.png'
+import wonderfullCity from '../../../assets/wonderful-city-img.jpg'
 
 // Register fonts
 Font.register({
@@ -210,7 +212,7 @@ export default function CreatPDF({data}) {
         <Document>
             <Page size={'A4'} style={styles.body}>
                 <View style={styles.center}>
-                    <Image style={styles.logo} src={'/logo.png'}/>
+                    <Image style={styles.logo} src={logo}/>
 
                 </View>
                 <View style={styles.row}>
@@ -330,8 +332,8 @@ export default function CreatPDF({data}) {
                            }}
                     />
                     <View style={styles.row}>
-                        <Image style={[styles.imageBg, styles.widthHalf]} src={'/wonderful-city-img.jpg'}/>
-                        <Image style={[styles.imageBg, styles.widthHalf]} src={'/location-crm.png'}/>
+                        <Image style={[styles.imageBg, styles.widthHalf]} src={wonderfullCity}/>
+                        <Image style={[styles.imageBg, styles.widthHalf]} src={location}/>
                     </View>
                 </View>
 
@@ -343,7 +345,7 @@ export default function CreatPDF({data}) {
             </Page>
             <Page size={'A4'} style={styles.body}>
                 <View style={styles.center}>
-                    <Image style={styles.logo} src={'/logo.png'}/>
+                    <Image style={styles.logo} src={logo}/>
 
                 </View>
                 <View style={[styles.center, styles.title, styles.marginY]}>
@@ -383,7 +385,7 @@ export default function CreatPDF({data}) {
             </Page>
             <Page size={'A4'} style={styles.body}>
                 <View style={styles.center}>
-                    <Image style={styles.logo} src={'/logo.png'}/>
+                    <Image style={styles.logo} src={logo}/>
 
                 </View>
                 <View style={styles.marginY}>
