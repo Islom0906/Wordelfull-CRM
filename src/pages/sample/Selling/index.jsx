@@ -78,6 +78,7 @@ const Index = () => {
                     // Handle the generated PDF blob here (e.g., you can initiate a download)
                     // For simplicity, let's log the blob URL
                     setIsLoadingPdf(false)
+                    setPdfId(null)
                     saveAs(blob,'Wonderfull-city.pdf')
                 });
         }
