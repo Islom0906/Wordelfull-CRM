@@ -1,8 +1,8 @@
 import {PDFDownloadLink, PDFViewer} from '@react-pdf/renderer';
-import {CreatPDF} from "./creat-PDF";
 import {useEffect} from "react";
 import apiService from "../../../@crema/services/apis/api";
 import {useQuery} from "react-query";
+import CreatPDF from "../Selling/creat-PDF";
 
 const PDF = () => {
     const {data, refetch} = useQuery(

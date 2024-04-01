@@ -58,11 +58,12 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#D4B57C',
         fontFamily: 'Montserrat',
-        // fontWeight: 'bold'
+        fontWeight: 'bold'
     },
     title: {
         fontSize: 16,
         fontFamily: 'Montserrat',
+        fontWeight:'bold',
         textAlign: 'center',
         color: '#D4B57C',
     },
@@ -84,8 +85,8 @@ const styles = StyleSheet.create({
         textAlign: 'justify',
     },
     logo: {
-        height: 90,
-        width: 90,
+        height: 70,
+        width: 70,
         objectFit: 'contain'
     },
     imageBg: {
@@ -259,12 +260,22 @@ export default function CreatPDF({data}) {
                         </View>
                         <View style={[styles.row, styles.marginSmY, styles.listItem]}>
                             <Text>
-                                Площадь:
+                                Площадь (м2):
                             </Text>
                             <Text style={styles.dashed}>
                             </Text>
                             <Text>
                                 {data?.ploshd}
+                            </Text>
+                        </View>
+                        <View style={[styles.row, styles.marginSmY, styles.listItem]}>
+                            <Text>
+                                Количество комнат:
+                            </Text>
+                            <Text style={styles.dashed}>
+                            </Text>
+                            <Text>
+                                {data?.roomCount}
                             </Text>
                         </View>
                     </View>
@@ -350,7 +361,7 @@ export default function CreatPDF({data}) {
                     <Image style={styles.logo} src={logo}/>
 
                 </View>
-                <View style={[styles.center, styles.title, styles.marginY]}>
+                <View style={[styles.center, {...styles.title,marginBottom:"25px"}]}>
                     <Text>
                         Уникальность проекта
                     </Text>
@@ -360,7 +371,7 @@ export default function CreatPDF({data}) {
                         <View style={[styles.row, styles.iconList]}>
                             {
                                 listIcon.map(item => (
-                                    <View key={item?.icon} style={[styles.iconBox, styles.widthHalf, styles.marginSmY]}>
+                                    <View key={item?.icon} style={[styles.iconBox, {...styles.widthHalf,marginBottom:'15px',gap:"10px"}]}>
                                         <Image style={styles.icon} src={item.icon}/>
                                         <Text style={styles.listItem}>
                                             {item.title}
