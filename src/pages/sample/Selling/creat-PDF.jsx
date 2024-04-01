@@ -437,8 +437,7 @@ export default function CreatPDF({data}) {
                                 Количество комнат:
                             </Text>
                             <Text>
-                                {/*{data?.ploshd}*/}
-                                xona size
+                                {data?.roomCount}
                             </Text>
                         </View>
 
