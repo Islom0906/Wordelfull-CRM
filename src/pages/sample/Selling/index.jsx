@@ -16,7 +16,7 @@ const Index = () => {
         floorId:null
     })
     const [pdfId, setPdfId] = useState(null)
-
+    const [isLoadingPdf, setIsLoadingPdf] = useState(false)
 
     // create pdf
     const {data:pdfData, refetch:pdfFeatch,isSuccess} = useQuery(
@@ -77,8 +77,8 @@ const Index = () => {
                 .then(blob => {
                     // Handle the generated PDF blob here (e.g., you can initiate a download)
                     // For simplicity, let's log the blob URL
+                    setIsLoadingPdf(false)
                     saveAs(blob,'Wonderfull-city.pdf')
-                    console.log(blob);
                 });
         }
     }, [pdfData]);
@@ -312,11 +312,12 @@ const Index = () => {
                 </Row>
                 <Spin
                     size='medium'
-                    spinning={getLoading}>
+                    spinning={getLoading||isLoadingPdf}>
                     <SellingTable
                         data={apartmentData?.result}
                         refetch={refetch}
                         setPdfId={setPdfId}
+                        setIsLoadingPdf={setIsLoadingPdf}
                     />
                 </Spin>
             </Space>

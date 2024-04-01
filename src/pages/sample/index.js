@@ -11,7 +11,7 @@ const HousePostEdit = React.lazy(() => import('./House/HousePostEdit'));
 const Floor = React.lazy(() => import('./Floor'));
 const FloorPostEdit = React.lazy(() => import('./Floor/FloorPostEdit'));
 const Payment = React.lazy(() => import('./Payment Method'));
-const PaymentPostEdit = React.lazy(() => import('./Payment Method/AppartmentPostEdit'));
+const PaymentPostEdit = React.lazy(() => import('./Payment Method/PaymentPostEdit'));
 const User = React.lazy(() => import('./User'));
 const UserPostEdit = React.lazy(() => import('./User/UserPostEdit'));
 const Course = React.lazy(() => import('./Course'));

@@ -16,7 +16,7 @@ const Error403 = () => {
 
   return (
     <AppAnimateGroup type='bottom'>
-      <AppPageMetadata title='Unauthorized' />
+      <AppPageMetadata title='' />
       <div className='error-container' key='a'>
         <div className='error-img'>
           <Logo />

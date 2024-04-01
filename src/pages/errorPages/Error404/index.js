@@ -16,7 +16,7 @@ const Error404 = () => {
 
   return (
     <AppAnimateGroup type='bottom'>
-      <AppPageMetadata title='Not Found' />
+      <AppPageMetadata title='' />
       <div className='error-container' key='a'>
         <div className='error-img'>
           <Logo />

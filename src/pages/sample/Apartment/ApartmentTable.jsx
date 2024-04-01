@@ -20,7 +20,7 @@ const ApartmentTable = ({data,deleteHandle}) => {
     };
     const columns = [
         {
-            title: 'Имя',
+            title: 'Квартира',
             dataIndex: 'name',
             id: 'name',
             render: (text) => <p>{text}</p>,
@@ -32,25 +32,25 @@ const ApartmentTable = ({data,deleteHandle}) => {
             render: (text) => <p>{text}м²</p>,
         },
         {
-            title: 'Количество номеров',
+            title: 'Количество ',
             dataIndex: 'roomCount',
             id: 'roomCount',
             render: (text) => <p>{text}</p>,
         },
         {
-            title: 'Стоимость номера',
+            title: 'Стоимость',
             dataIndex: 'price',
             id: 'price',
             render: (text) => <p>{text}$</p>,
         },
         {
-            title: 'Состояние номера',
+            title: 'Состояние',
             dataIndex: 'status',
             id: 'status',
-            render: (text) => <Tag color={text===1?"#0232f6":text===2 ?"#f5c306" :"#ff0000"}>{text===1?"Empty":text===2 ?"Busied" :"Buyed"}</Tag>,
+            render: (text) => <Tag color={text===1?"#008000":text===2 ?"#f5c306" :"#ff0000"}>{text===1?"Доступно":text===2 ?"Занято" :"Продано"}</Tag>,
         },
         {
-            title: 'Изображение комнаты',
+            title: 'Изображение',
             dataIndex: 'homeImage',
             id: 'homeImage',
             render: (image) => {

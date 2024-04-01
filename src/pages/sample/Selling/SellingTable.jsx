@@ -6,16 +6,16 @@ import React, {useEffect, useMemo, useState} from "react";
 import {useMutation} from "react-query";
 import apiService from "../../../@crema/services/apis/api";
 import {EditOutlined} from "@ant-design/icons";
+import {useAuthUser} from "../../../@crema/utility/AuthHooks";
 
 const initialValueForm = {
     status: null,
 };
-const SellingTable = ({data,refetch,setPdfId}) => {
-
+const SellingTable = ({data,refetch,setPdfId,setIsLoadingPdf}) => {
+    const {user}=useAuthUser()
     const [form] = Form.useForm();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editId, setEditId] = useState(null)
-
 
     const {
         mutate: editStatusMutate,
@@ -36,6 +36,7 @@ const SellingTable = ({data,refetch,setPdfId}) => {
 
     const CreatePDF = (id) => {
         setPdfId(id)
+        setIsLoadingPdf(true)
     };
 
     // status edit
@@ -73,7 +74,7 @@ const SellingTable = ({data,refetch,setPdfId}) => {
 
     // option status
     const optionsStatus = useMemo(() => {
-        return [
+        const data=[
             {
                 value: 1,
                 label: 'Доступно',
@@ -82,18 +83,24 @@ const SellingTable = ({data,refetch,setPdfId}) => {
                 value: 2,
                 label: 'Занято',
             },
-            {
-                value: 3,
-                label: 'Продано',
-            },
-        ];
+        ]
+         if (user.role[1]==='admin'){
+             data.push({
+                 value: 3,
+                 label: 'Продано',
+             })
+         }
+
+
+
+        return data
     }, []);
 
 
     // table columns
     const columns = [
         {
-            title: 'Имя',
+            title: 'Квартира',
             dataIndex: 'name',
             id: 'name',
             render: (text) => <p>{text}</p>,
@@ -105,26 +112,26 @@ const SellingTable = ({data,refetch,setPdfId}) => {
             render: (text) => <p>{text}м²</p>,
         },
         {
-            title: 'Количество номеров',
+            title: 'Количество',
             dataIndex: 'roomCount',
             id: 'roomCount',
             render: (text) => <p>{text}</p>,
         },
         {
-            title: 'Стоимость номера',
+            title: 'Стоимость',
             dataIndex: 'price',
             id: 'price',
             render: (text) => <p>{text}$</p>,
         },
         {
-            title: 'Состояние номера',
+            title: 'Состояние',
             dataIndex: 'status',
             id: 'status',
             render: (text,record) =>
                 (
                     <Button
                         onClick={() => EditStatus(record.id)}
-                        style={{backgroundColor:text === 1 ? "#0232f6" : text === 2 ? "#f7ff00" : "#ff0000",
+                        style={{backgroundColor:text === 1 ? "green" : text === 2 ? "#f7ff00" : "#ff0000",
                             color:text === 1 ?
                                 "#fff" :
                                 text === 2 ? "#000000" :
@@ -132,14 +139,14 @@ const SellingTable = ({data,refetch,setPdfId}) => {
                         icon={<EditOutlined />
                         }
                     >
-                        {text === 1 ? "Empty" : text === 2 ? "Busied" : "Bought"}
+                        {text === 1 ? "Доступно" : text === 2 ? "Занято" : "Продано"}
                     </Button>
                 )
 
 
         },
         {
-            title: 'Изображение комнаты',
+            title: 'Изображение',
             dataIndex: 'homeImage',
             id: 'homeImage',
             render: (image) => {
@@ -153,12 +160,12 @@ const SellingTable = ({data,refetch,setPdfId}) => {
             },
         },
         {
-            title: 'Событие',
+            title: 'PDF',
             id: 'action',
             render: (_, record) => (
                 <Space size={20}>
                     <Button
-                        disabled={record.status!==1}
+                        disabled={record.status===3}
                         onClick={() => CreatePDF(record.id)}
                         type='outline'
                         icon={<FaFilePdf/>}>
@@ -232,7 +239,8 @@ const SellingTable = ({data,refetch,setPdfId}) => {
 SellingTable.propTypes = {
     data: PropTypes.array,
     refetch:PropTypes.func,
-    setPdfId:PropTypes.func
+    setPdfId:PropTypes.func,
+    setIsLoadingPdf:PropTypes.func
 }
 
 export default SellingTable;

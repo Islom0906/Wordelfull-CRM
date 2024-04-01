@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import AppartmentTable from './AppartmentTable';
+import PaymentTable from './PaymentTable';
 import {Button, Col, Input, message, Row, Space, Spin} from 'antd';
 import {PlusOutlined} from '@ant-design/icons';
 import {useNavigate} from 'react-router-dom';
@@ -89,7 +89,7 @@ const Index = () => {
           <Spin
               size='medium'
               spinning={getNewsLoading || deleteNewsLoading}>
-            <AppartmentTable
+            <PaymentTable
                 data={isSearch ? search : data?.result}
                 deleteHandle={deleteHandle}
                 refetch={refetch}

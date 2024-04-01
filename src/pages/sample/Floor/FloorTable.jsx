@@ -20,7 +20,7 @@ const FloorTable = ({data,deleteHandle}) => {
     };
     const columns = [
         {
-            title: 'Имя',
+            title: 'Этаж',
             dataIndex: 'name',
             id: 'name',
             render: (text) => <p>{text}</p>,

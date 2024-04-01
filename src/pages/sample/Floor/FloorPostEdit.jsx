@@ -287,8 +287,8 @@ const FloorPostEdit = () => {
                     <Col span={8}>
                         <FormInput
                             required={true}
-                            required_text={'Требуется название лота'}
-                            label={'Название лота'}
+                            required_text={'Требуется название этаж'}
+                            label={'Название этаж'}
                             name={'name'}
                         />
 

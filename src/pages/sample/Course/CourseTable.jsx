@@ -6,6 +6,7 @@ import React, {useEffect,  useState} from "react";
 import apiService from "../../../@crema/services/apis/api";
 import {useMutation} from "react-query";
 import FormInput from "../../../@crema/core/Form/FormInput";
+import moment from "moment";
 
 const initialValueForm = {
     title_uz: "",
@@ -87,11 +88,17 @@ const CourseTable = ({data, refetch}) => {
                         onClick={() => Edit(record.id)}
                         type='primary'
                         icon={<EditOutlined/>}>
-                        Edit Status
+                        Изменить курс
                     </Button>
 
                 </Space>
             ),
+        },
+        {
+            title: 'Последнее изменение',
+            dataIndex: 'updateTime',
+            id: 'updateTime',
+            render: (text) => <p>{moment(text).format("DD.MM.YYYY")}</p>,
         },
     ];
 

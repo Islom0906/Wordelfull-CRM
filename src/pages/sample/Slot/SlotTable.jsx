@@ -21,13 +21,13 @@ const SlotTable = ({data,deleteHandle}) => {
     };
     const columns = [
         {
-            title: 'Name',
+            title: 'Слот',
             dataIndex: 'name',
             id: 'name',
             render: (text) => <p>{text}</p>,
         },
         {
-            title: 'Finished Date',
+            title: 'Дата окончания',
             dataIndex: 'finishedDate',
             id: 'finishedDate',
             render: (text) => <Tag>{moment(text).format('L')}</Tag>,

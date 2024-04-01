@@ -20,7 +20,7 @@ const HouseTable = ({data,deleteHandle}) => {
     };
     const columns = [
         {
-            title: 'Имя',
+            title: 'Дом',
             dataIndex: 'name',
             id: 'name',
             render: (text) => <p>{text}</p>,

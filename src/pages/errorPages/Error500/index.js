@@ -16,7 +16,7 @@ const Error500 = () => {
 
   return (
     <AppAnimateGroup type='bottom'>
-      <AppPageMetadata title='Server Error' />
+      <AppPageMetadata title='' />
       <div className='error-container' key='a'>
         <div className='error-img'>
           <Logo />

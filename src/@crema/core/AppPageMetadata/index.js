@@ -10,7 +10,7 @@ const SITE_URL =
 
 const FACEBOOK_APP_ID = 'XXXXXXXXX';
 
-const defaultTitle = 'Wonderful CRM admin Panel';
+const defaultTitle = 'Wonderful City';
 const defaultDescription =
   'Admin Panel';
 const defaultImage =
@@ -61,6 +61,7 @@ const AppPageMetadata = ({children, ...rest}) => {
       {property: 'og:description', content: theDescription},
       {property: 'og:site_name', content: defaultTitle},
       {property: 'fb:app_id', content: FACEBOOK_APP_ID},
+        {name: 'robots', content: 'noindex, nofollow'}
     ];
 
     if (noCrawl) {

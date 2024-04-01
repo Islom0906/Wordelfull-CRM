@@ -8,6 +8,13 @@ import moment from "moment";
 import logo from '../../../assets/logo.png'
 import location from '../../../assets/location-crm.png'
 import wonderfullCity from '../../../assets/wonderful-city-img.jpg'
+import mapPinned from '../../../assets/pdf-icon/map-pinned.png'
+import building from '../../../assets/pdf-icon/building-2.png'
+import trees from '../../../assets/pdf-icon/trees.png'
+import sofa from '../../../assets/pdf-icon/sofa.png'
+import gamepad from '../../../assets/pdf-icon/gamepad-2.png'
+import parking from '../../../assets/pdf-icon/circle-parking.png'
+
 
 // Register fonts
 Font.register({
@@ -181,27 +188,27 @@ export default function CreatPDF({data}) {
 
     const listIcon = [
         {
-            icon: '/icons/map-pinned.png',
+            icon: mapPinned,
             title: 'Идеальное расположение'
         },
         {
-            icon: '/icons/building-2.png',
+            icon: building,
             title: 'Впечатляющая архитектура'
         },
         {
-            icon: '/icons/trees.png',
+            icon: trees,
             title: 'Впечатляющая архитектура '
         },
         {
-            icon: '/icons/sofa.png',
+            icon: sofa,
             title: 'Роскошное Лобби'
         },
         {
-            icon: '/icons/gamepad-2.png',
+            icon: gamepad,
             title: '50.000 кв метров ТорговоРазвлекательный Центр'
         },
         {
-            icon: '/icons/circle-parking.png',
+            icon: parking,
             title: 'Подземный паркинг'
         },
 
@@ -324,12 +331,7 @@ export default function CreatPDF({data}) {
                 </View>
                 <View>
                     <Image style={styles.floorImage}
-                           src={{
-                               uri: `${process.env.REACT_APP_IMAGE_URL}/${data?.apartmentFloorImage}`,
-                               method: "GET",
-                               headers: {"Cache-Control": "no-cache"},
-                               body: ""
-                           }}
+                           src={`${process.env.REACT_APP_IMAGE_URL}/${data?.apartmentFloorImage}`}
                     />
                     <View style={styles.row}>
                         <Image style={[styles.imageBg, styles.widthHalf]} src={wonderfullCity}/>
@@ -370,12 +372,8 @@ export default function CreatPDF({data}) {
                     </View>
                 </View>
                 <View>
-                    <Image style={[styles.iconBg, styles.marginY]} src={{
-                        uri: `${process.env.REACT_APP_IMAGE_URL}/${data?.apartmentHouseImage}`,
-                        method: "GET",
-                        headers: {"Cache-Control": "no-cache"},
-                        body: ""
-                    }}/>
+                    <Image style={[styles.iconBg, styles.marginY]}
+                           src={`${process.env.REACT_APP_IMAGE_URL}/${data?.apartmentHouseImage}`}/>
                 </View>
                 <View style={[styles.center, styles.marginY]}>
                     <Text style={styles.title}>
@@ -590,7 +588,7 @@ export default function CreatPDF({data}) {
                             Дата прайса
                         </Text>
                         <Text>
-                            {data?.nowTime}
+                            {moment(data?.nowTime).format("DD.MM.YYYY")}
                         </Text>
                     </View>
 

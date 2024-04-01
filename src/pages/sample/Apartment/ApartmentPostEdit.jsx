@@ -537,16 +537,16 @@ const ApartmentPostEdit = () => {
                     <Col span={12}>
                         <FormInputNumber
                             required={true}
-                            required_text={'Требуется количество комнат'}
-                            label={'Количество комнат'}
+                            required_text={'Требуется количество комната'}
+                            label={'Количество комната'}
                             name={'roomCount'}
                         />
                     </Col>
                     <Col span={12}>
                         <FormInputNumber
                             required={true}
-                            required_text={'Требуется стоимость номера'}
-                            label={'Стоимость номера ($)'}
+                            required_text={'Требуется стоимость квартира'}
+                            label={'Стоимость квартира ($)'}
                             name={'price'}
                         />
                     </Col>

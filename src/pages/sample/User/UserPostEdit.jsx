@@ -310,8 +310,8 @@ const UserPostEdit = () => {
                     <Col span={12}>
                         <FormInput
                             required={true}
-                            required_text={'Требуется полное имя'}
-                            label={'Полное имя'}
+                            required_text={'Требуется полное ФИО'}
+                            label={'Полное ФИО'}
                             name={'fulName'}
                         />
                     </Col>
