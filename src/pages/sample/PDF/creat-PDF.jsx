@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     floorImage:{
       width:'100%',
       objectFit:'cover',
-      height:'300'
+      height:'280px'
     },
     iconList: {
         flexWrap: "wrap"
@@ -316,21 +316,16 @@ export function CreatPDF({data}) {
                     <Text style={styles.title}>
                         Желаем Вам удачной покупки!
                     </Text>
-                    <Text style={{...styles.listItem,marginTop:5}}>
+                    <Text style={{...styles.listItem,marginTop:10}}>
                         Расположение Вашей
                         квартиры на этаже
                     </Text>
                 </View>
                 <View>
                     <Image style={styles.floorImage}
-                           src={{
-                               uri: `${process.env.REACT_APP_IMAGE_URL}/${data?.apartmentFloorImage}`,
-                               method: "GET",
-                               headers: {"Cache-Control": "no-cache"},
-                               body: ""
-                           }}
+                           src={'/wonderful-city-img.jpg'}
                     />
-                    <View style={styles.row}>
+                    <View style={{...styles.row,marginTop:'10px'}}>
                         <Image style={[styles.imageBg, styles.widthHalf]} src={'/wonderful-city-img.jpg'}/>
                         <Image style={[styles.imageBg, styles.widthHalf]} src={'/location-crm.png'}/>
                     </View>

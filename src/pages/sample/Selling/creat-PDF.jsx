@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     floorImage:{
       width:'100%',
       objectFit:'cover',
-      height:'300'
+      height:'280px'
     },
     iconList: {
         flexWrap: "wrap"
@@ -333,7 +333,7 @@ export default function CreatPDF({data}) {
                     <Image style={styles.floorImage}
                            src={`${process.env.REACT_APP_IMAGE_URL}/${data?.apartmentFloorImage}`}
                     />
-                    <View style={styles.row}>
+                    <View style={{...styles.row,marginTop:'10px'}}>
                         <Image style={[styles.imageBg, styles.widthHalf]} src={wonderfullCity}/>
                         <Image style={[styles.imageBg, styles.widthHalf]} src={location}/>
                     </View>
