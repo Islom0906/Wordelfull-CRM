@@ -256,6 +256,7 @@ const ApartmentPostEdit = () => {
             homeImageId:fileListPropsApartment[0]?.uid
         };
         if (editApartmentSuccess) {
+            data.status=editApartmentData?.status
             putApartment({url: `/Apartment`, data,id:editId});
         } else {
             postApartmentMutate({url: "/Apartment/", data});
