@@ -99,8 +99,9 @@ const styles = StyleSheet.create({
     },
     floorImage:{
       width:'100%',
-      objectFit:'cover',
-      height:'280px'
+      objectFit:'contain',
+      height:'280px',
+        marginTop:'20px'
     },
     iconList: {
         flexWrap: "wrap"
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
     },
     iconBg: {
         width: '100%',
-        objectFit: 'cover',
+        objectFit: 'contain',
         objectPosition: 'center',
         height: 500
     },
