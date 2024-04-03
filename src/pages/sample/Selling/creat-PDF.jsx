@@ -5,7 +5,7 @@ import MontserratBold from '../../../assets/fonts/Montserrat-Bold.ttf'
 import MontserratSemiBold from '../../../assets/fonts/Montserrat-SemiBold.ttf'
 import MontserratMedium from '../../../assets/fonts/Montserrat-Medium.ttf'
 import moment from "moment";
-import logo from '../../../assets/logo.png'
+import logo from '../../../assets/logo-pdf.png'
 import location from '../../../assets/location-crm.png'
 import wonderfullCity from '../../../assets/wonderful-city-img.jpg'
 import mapPinned from '../../../assets/pdf-icon/map-pinned.png'
@@ -196,7 +196,7 @@ export default function CreatPDF({data}) {
         },
         {
             icon: building,
-            title: 'Впечатляющая архитектура'
+            title: 'Уникальные проекты '
         },
         {
             icon: trees,
@@ -208,7 +208,7 @@ export default function CreatPDF({data}) {
         },
         {
             icon: gamepad,
-            title: '50.000 кв метров ТорговоРазвлекательный Центр'
+            title: '50.000 кв метров Торгово Развлекательный Центр'
         },
         {
             icon: parking,
@@ -342,7 +342,7 @@ export default function CreatPDF({data}) {
                     </Text>
                     <Text style={{...styles.listItem,marginTop:5}}>
                         Расположение Вашей
-                        квартиры на этаже
+                        квартиры
                     </Text>
                 </View>
                 <View>

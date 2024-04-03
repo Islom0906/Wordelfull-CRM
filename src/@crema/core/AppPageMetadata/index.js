@@ -14,7 +14,7 @@ const defaultTitle = 'Wonderful City';
 const defaultDescription =
   'Admin Panel';
 const defaultImage =
-  '/public/logo.png';
+  '/public/logo-pdf.png';
 const defaultTwitter = '@crema';
 const defaultSep = ' | ';
 
