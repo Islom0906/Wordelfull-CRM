@@ -104,11 +104,10 @@ const JWTAuthAuthProvider = ({children}) => {
     if (localStorage.getItem('wonderfulRefToken')){
       localStorage.removeItem('wonderfulRefToken')
     }
-    console.log(`/Authorize/login?userName=${userName}&password=${password}`)
 
     dispatch({type: FETCH_START});
     try {
-      const {data} = await jwtAxios.post(`/Authorize/login?userName=${userName}&password=${password}`);
+      const {data} = await jwtAxios.post(`/Authorize/login`,{userName,password});
       localStorage.setItem('wonderfulToken', data);
       // localStorage.setItem('wonderfulRefToken', data.refresh);
       setAuthToken(data);

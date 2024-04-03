@@ -82,8 +82,8 @@ const ApartmentPostEdit = () => {
             message.success('Success')
         },
         onError: (error) => {
-            for (let obj in error.response.data) {
-                message.error(`${obj}: ${error.response.data[obj]}`)
+            for (let obj in error.response?.data?.errors) {
+                message.error(`${obj}: ${error.response?.data?.errors[obj]}`)
             }
         }
     });
