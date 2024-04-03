@@ -21,7 +21,7 @@ const Index = () => {
 
   // query-slot-get
   const {data: slotData, refetch: slotFetch} = useQuery(
-      'get-slot',
+      'get-apartment-slot',
       () => apiService.getData('/Slot'),
       {
         enabled: false,
@@ -29,7 +29,7 @@ const Index = () => {
   );
   // query-house-get
   const {data: houseData, refetch: houseFetch,remove:removeHouse} = useQuery(
-      'get-house',
+      'get-apartment-house',
       () => apiService.getData(`/House?slotId=${filterId?.slotId}`),
       {
         enabled: false,
@@ -38,7 +38,7 @@ const Index = () => {
 
   // query-floor-get
   const {data: floorData, refetch: floorFetch,remove:removeFloor} = useQuery(
-      'get-floor',
+      'get-apartment-floor',
       () => apiService.getData(`/Floor?housId=${filterId?.houseId}`),
       {
         enabled: false,

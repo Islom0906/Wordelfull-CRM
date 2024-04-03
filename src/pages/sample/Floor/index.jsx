@@ -22,7 +22,7 @@ const Index = () => {
 
   // query-slot-get
   const {data: slotData, refetch: slotFetch} = useQuery(
-      'get-slot',
+      'get-floor-slot',
       () => apiService.getData('/Slot'),
       {
         enabled: false,
@@ -30,7 +30,7 @@ const Index = () => {
   );
   // query-house-get
   const {data: houseData, refetch: houseFetch} = useQuery(
-      'get-house',
+      'get-floor-house',
       () => apiService.getData(`/House?slotId=${filterId?.slotId}`),
       {
         enabled: false,
