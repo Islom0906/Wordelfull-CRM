@@ -238,7 +238,7 @@ export default function CreatPDF({data}) {
                             <Text style={styles.dashed}>
                             </Text>
                             <Text style={styles.textValue}>
-                                {data?.houseName}
+                                {data?.apartmentName}
                             </Text>
                         </View>
                         <View style={styles.row}>
