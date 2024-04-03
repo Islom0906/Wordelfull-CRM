@@ -104,6 +104,7 @@ const JWTAuthAuthProvider = ({children}) => {
     if (localStorage.getItem('wonderfulRefToken')){
       localStorage.removeItem('wonderfulRefToken')
     }
+    console.log(`/Authorize/login?userName=${userName}&password=${password}`)
 
     dispatch({type: FETCH_START});
     try {

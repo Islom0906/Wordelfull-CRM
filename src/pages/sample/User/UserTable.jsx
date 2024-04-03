@@ -67,6 +67,8 @@ const UserTable = ({data,deleteHandle}) => {
                         icon={<EditOutlined />}>
                         Изменить
                     </Button>
+                    {
+                        record?.role!==1&&
                     <Popconfirm
                         title={'Are you sure to delete this task?'}
                         description={'Delete the task '}
@@ -75,6 +77,9 @@ const UserTable = ({data,deleteHandle}) => {
                             Удалить
                         </Button>
                     </Popconfirm>
+
+                    }
+
                 </Space>
             ),
         },

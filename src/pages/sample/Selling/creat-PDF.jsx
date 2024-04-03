@@ -31,7 +31,7 @@ Font.register({
 const styles = StyleSheet.create({
     dashed: {
         width: "100%",
-        borderBottom: "1px dashed #D4B57C",
+        borderBottom: "1px dashed #553248",
         flex: '1 1 0%'
     },
     body: {
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     },
     title_gold: {
         fontSize: 14,
-        color: '#D4B57C',
+        color: '#553248',
         fontFamily: 'Montserrat',
         fontWeight: 'bold'
     },
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat',
         fontWeight:'bold',
         textAlign: 'center',
-        color: '#D4B57C',
+        color: '#553248',
     },
     listItem: {
         color: '#918C86',
@@ -78,7 +78,9 @@ const styles = StyleSheet.create({
     marginY: {
         marginVertical: 10,
     },
-
+    textValue:{
+        fontWeight:"bold",
+    },
     text: {
         margin: 12,
         fontSize: 12,
@@ -132,7 +134,7 @@ const styles = StyleSheet.create({
         marginBottom:'15px',
         borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: '#D4B57C',
+        borderColor: '#553248',
         borderRightWidth: 0,
         borderBottomWidth: 0,
     },
@@ -144,7 +146,7 @@ const styles = StyleSheet.create({
     tableCol: {
         width: '50%',
         borderStyle: 'solid',
-        borderColor: '#D4B57C',
+        borderColor: '#553248',
         borderWidth: 1,
         borderLeftWidth: 0,
         borderTopWidth: 0,
@@ -152,7 +154,7 @@ const styles = StyleSheet.create({
     tableColRight: {
         width: '50%',
         borderStyle: 'solid',
-        borderColor: '#D4B57C',
+        borderColor: '#553248',
         borderWidth: 1,
         borderLeftWidth: 0,
         borderTopWidth: 0,
@@ -160,7 +162,7 @@ const styles = StyleSheet.create({
     },
     tableHeader: {
         // width:'100%',
-        backgroundColor: '#D4B57C',
+        backgroundColor: '#553248',
         padding: "1px 0 4px 0",
         color: 'white',
         fontFamily: 'Montserrat'
@@ -234,37 +236,40 @@ export default function CreatPDF({data}) {
                             </Text>
                             <Text style={styles.dashed}>
                             </Text>
-                            <Text>
+                            <Text style={styles.textValue}>
                                 {data?.houseName}
                             </Text>
                         </View>
-                        <View style={[styles.row, styles.marginSmY, styles.listItem]}>
-                            <Text>
-                                Блок:
-                            </Text>
-                            <Text style={styles.dashed}>
-                            </Text>
-                            <Text>
-                                {data?.slotName}
-                            </Text>
+                        <View style={styles.row}>
+                            <View style={[styles.row, styles.marginSmY, styles.listItem,styles.widthHalf]}>
+                                <Text>
+                                    Блок:
+                                </Text>
+                                <Text style={styles.dashed}>
+                                </Text>
+                                <Text style={styles.textValue}>
+                                    {data?.slotName}
+                                </Text>
+                            </View>
+                            <View style={[styles.row, styles.marginSmY, styles.listItem,styles.widthHalf]}>
+                                <Text>
+                                    Этаж:
+                                </Text>
+                                <Text style={styles.dashed}>
+                                </Text>
+                                <Text style={styles.textValue}>
+                                    {data?.floorName}
+                                </Text>
+                            </View>
                         </View>
-                        <View style={[styles.row, styles.marginSmY, styles.listItem]}>
-                            <Text>
-                                Этаж:
-                            </Text>
-                            <Text style={styles.dashed}>
-                            </Text>
-                            <Text>
-                                {data?.floorName}
-                            </Text>
-                        </View>
+
                         <View style={[styles.row, styles.marginSmY, styles.listItem]}>
                             <Text>
                                 Площадь (м2):
                             </Text>
                             <Text style={styles.dashed}>
                             </Text>
-                            <Text>
+                            <Text style={styles.textValue}>
                                 {data?.ploshd}
                             </Text>
                         </View>
@@ -274,7 +279,7 @@ export default function CreatPDF({data}) {
                             </Text>
                             <Text style={styles.dashed}>
                             </Text>
-                            <Text>
+                            <Text style={styles.textValue}>
                                 {data?.roomCount}
                             </Text>
                         </View>
@@ -289,7 +294,7 @@ export default function CreatPDF({data}) {
                             </Text>
                             <Text style={styles.dashed}>
                             </Text>
-                            <Text>
+                            <Text style={styles.textValue}>
                                 {moment(data?.slotFinished
                                 ).format("DD.MM.YYYY")}
                             </Text>
@@ -300,7 +305,7 @@ export default function CreatPDF({data}) {
                             </Text>
                             <Text style={styles.dashed}>
                             </Text>
-                            <Text>
+                            <Text style={styles.textValue}>
 
                                 {moment(data?.nowTime
                                 ).format("DD.MM.YYYY")}
@@ -312,7 +317,7 @@ export default function CreatPDF({data}) {
                             </Text>
                             <Text style={styles.dashed}>
                             </Text>
-                            <Text>
+                            <Text style={styles.textValue}>
 
                                 {data?.sellerName}
                             </Text>
@@ -323,7 +328,7 @@ export default function CreatPDF({data}) {
                             </Text>
                             <Text style={styles.dashed}>
                             </Text>
-                            <Text>
+                            <Text style={styles.textValue}>
 
                                 {data?.sellerPhoneNumber}
                             </Text>
@@ -331,7 +336,7 @@ export default function CreatPDF({data}) {
                     </View>
                 </View
                 >
-                <View style={[styles.center, styles.marginY]}>
+                <View style={{...styles.center,marginTop:30}}>
                     <Text style={styles.title}>
                         Желаем Вам удачной покупки!
                     </Text>
@@ -412,15 +417,14 @@ export default function CreatPDF({data}) {
                     <View style={styles.tableList}>
                         <View style={[styles.row, styles.listItem]}>
                             <Text>
-                                Номер квартиры:
+                                Блок
                             </Text>
                             <Text>
-                                {data?.apartmentName}
+                                {data?.slotName}
                             </Text>
                         </View>
 
                     </View>
-
                     <View style={styles.tableList}>
                         <View style={[styles.row, styles.listItem]}>
                             <Text>
@@ -431,6 +435,19 @@ export default function CreatPDF({data}) {
                             </Text>
                         </View>
                     </View>
+                    <View style={styles.tableList}>
+                        <View style={[styles.row, styles.listItem]}>
+                            <Text>
+                                Номер квартиры:
+                            </Text>
+                            <Text>
+                                {data?.apartmentName}
+                            </Text>
+                        </View>
+
+                    </View>
+
+
                     <View style={styles.tableList}>
                         <View style={[styles.row, styles.listItem]}>
                             <Text>
@@ -498,10 +515,10 @@ export default function CreatPDF({data}) {
 
                                     <View style={[styles.row]}>
                                         <View style={styles.tableColRight}>
-                                            <Text style={styles.tableCell}>{payment?.amountExcludingSkidk?.toLocaleString('en-US', { style: 'decimal' }).replace(/,/g, ' ')} $</Text>
+                                            <Text style={styles.tableCell}>{payment?.initialPayment?.toLocaleString('en-US', { style: 'decimal' }).replace(/,/g, ' ')} $</Text>
                                         </View>
                                         <View style={{width:'50%'}}>
-                                            <Text style={styles.tableCell}>{payment?.amountExcludingSkidkSum?.toLocaleString('en-US', { style: 'decimal' }).replace(/,/g, ' ')} сум </Text>
+                                            <Text style={styles.tableCell}>{payment?.initialPaymentSum?.toLocaleString('en-US', { style: 'decimal' }).replace(/,/g, ' ')} сум </Text>
                                         </View>
                                     </View>
                                 </View>

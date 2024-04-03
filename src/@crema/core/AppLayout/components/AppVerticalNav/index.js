@@ -8,21 +8,16 @@ import defaultConfig from '../../../../utility/AppContextProvider/defaultConfig'
 import {useSidebarContext} from '../../../../utility/AppContextProvider/SidebarContextProvider';
 import {MenuStyle} from '../../../../../shared/constants/AppEnums';
 import {useAuthUser} from "../../../../utility/AuthHooks";
-// import {useAuthUser} from "../../../../utility/AuthHooks";
 
 const AppVerticalNav = () => {
-  const {menuStyle, sidebarColorSet} = useSidebarContext();
   const {pathname} = useLocation();
   const selectedKeys = pathname.substring(1).split('/');
   const defaultOpenKeys = selectedKeys[0];
   const [openKeys, setOpenKeys] = useState([defaultOpenKeys]);
   const { user } = useAuthUser();
+  const {menuStyle, sidebarColorSet} = useSidebarContext();
 
-  // const user={
-  //   role:['user','admin']
-  // }
 
-  //
   useEffect(() => {
     setOpenKeys([selectedKeys[selectedKeys.length - 2]]);
   }, []);

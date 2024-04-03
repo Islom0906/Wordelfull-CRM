@@ -39,6 +39,7 @@ export const getUserFromAWS = (user) => {
 };
 
 export const getUserFromJwtAuth = (user) => {
+
     if (user) {
         return {
             id: 1,
@@ -48,16 +49,16 @@ export const getUserFromJwtAuth = (user) => {
             photoURL: `${process.env.REACT_APP_IMAGE_URL}/${user?.image?.path}`,
             role: user.role === 1 ? authRole?.admin : authRole.user,
         };
+    }
 
-
-    } else {
+    else {
         return {
             id: 1,
             uid: 0,
             displayName: "",
             email: "user?.email",
             photoURL: ``,
-            role: authRole.user,
+            role: authRole?.admin,
         };
     }
 };

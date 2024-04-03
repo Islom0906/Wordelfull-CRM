@@ -70,7 +70,6 @@ const Index = () => {
 
 
     useEffect(() => {
-        console.log('render')
         if (isSuccess&&pdfId){
             pdf(<CreatPDF data={pdfData}/>)
                 .toBlob()
