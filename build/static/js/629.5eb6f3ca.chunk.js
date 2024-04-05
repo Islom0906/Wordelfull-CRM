@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwonderfullcity_crm=self.webpackChunkwonderfullcity_crm||[]).push([[629],{8629:(e,c,l)=>{l.r(c),l.d(c,{default:()=>d});var s=l(2032),r=l(7537),t=l(579);const d=()=>(0,t.jsx)("div",{children:(0,t.jsx)(s.TO,{style:{width:"100%",height:"700px"},children:(0,t.jsx)(r.A,{})})})}}]);
+//# sourceMappingURL=629.5eb6f3ca.chunk.js.map

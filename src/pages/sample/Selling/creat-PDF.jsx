@@ -254,6 +254,19 @@ export default function CreatPDF({data}) {
                             </View>
                             <View style={[styles.row, styles.marginSmY, styles.listItem,styles.widthHalf]}>
                                 <Text>
+                                    Дом:
+                                </Text>
+                                <Text style={styles.dashed}>
+                                </Text>
+                                <Text style={styles.textValue}>
+                                    {data?.houseName}
+                                </Text>
+                            </View>
+                        </View>
+
+                        <View style={[styles.row, styles.marginSmY, styles.listItem]}>
+                            <View style={[styles.row, styles.marginSmY, styles.listItem,styles.widthHalf]}>
+                                <Text>
                                     Этаж:
                                 </Text>
                                 <Text style={styles.dashed}>
@@ -262,17 +275,17 @@ export default function CreatPDF({data}) {
                                     {data?.floorName}
                                 </Text>
                             </View>
-                        </View>
+                            <View style={[styles.row, styles.marginSmY, styles.listItem,styles.widthHalf]}>
+                                <Text>
+                                    Площадь (м2):
+                                </Text>
+                                <Text style={styles.dashed}>
+                                </Text>
+                                <Text style={styles.textValue}>
+                                    {data?.ploshd}
+                                </Text>
+                            </View>
 
-                        <View style={[styles.row, styles.marginSmY, styles.listItem]}>
-                            <Text>
-                                Площадь (м2):
-                            </Text>
-                            <Text style={styles.dashed}>
-                            </Text>
-                            <Text style={styles.textValue}>
-                                {data?.ploshd}
-                            </Text>
                         </View>
                         <View style={[styles.row, styles.marginSmY, styles.listItem]}>
                             <Text>
@@ -429,6 +442,17 @@ export default function CreatPDF({data}) {
                     <View style={styles.tableList}>
                         <View style={[styles.row, styles.listItem]}>
                             <Text>
+                                Дом
+                            </Text>
+                            <Text>
+                                {data?.houseName}
+                            </Text>
+                        </View>
+
+                    </View>
+                    <View style={styles.tableList}>
+                        <View style={[styles.row, styles.listItem]}>
+                            <Text>
                                 Этаж:
                             </Text>
                             <Text>
@@ -471,7 +495,7 @@ export default function CreatPDF({data}) {
                         </View>
 
                     </View>
-                    <View style={{...styles.tableList, marginTop: '20px', fontWeight: "bold"}}>
+                    <View style={{...styles.tableList, marginTop: '10px', fontWeight: "bold"}}>
                         <View style={[styles.row, styles.listItem]}>
                             <Text style={{color:"black"}}>
                                 Базовая цена квартиры:
@@ -566,7 +590,7 @@ export default function CreatPDF({data}) {
                 }
 
 
-                <View style={{...styles.bottomInfo, marginTop: "15px"}}>
+                <View style={{...styles.bottomInfo, marginTop: "10px"}}>
                     <View style={[styles.row, styles.listItem]}>
                         <Text>
                             Актуальный курс валют
@@ -587,7 +611,7 @@ export default function CreatPDF({data}) {
                 </View>
 
 
-                <View style={{...styles.bottomInfo, marginTop: "15px", fontWeight: "bold"}}>
+                <View style={{...styles.bottomInfo, marginTop: "10px", fontWeight: "bold"}}>
                     <View style={[styles.row, styles.listItem]}>
                         <Text>
                             Менеджер
