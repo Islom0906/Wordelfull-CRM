@@ -6,6 +6,7 @@ import {BsFillHouseDoorFill} from "react-icons/bs";
 import {MdOutlineApartment} from "react-icons/md";
 import {LiaMoneyCheckAltSolid} from "react-icons/lia";
 import {FiDollarSign} from "react-icons/fi";
+import {LuLayoutDashboard} from "react-icons/lu";
 
 
 const routesConfig = [
@@ -24,6 +25,15 @@ const routesConfig = [
             //     path: '/pdf',
             //     role:authRole.user
             // },
+            {
+                id: 'dashboard',
+                title: 'dashboard',
+                messageId: 'sidebar.sample.dashboard',
+                type: 'item',
+                icon: <LuLayoutDashboard/>,
+                path: '/dashboard',
+                role:authRole.user
+            },
             {
                 id: 'selling',
                 title: 'selling',

@@ -47,7 +47,7 @@ const SellingTable = ({data,refetch,setPdfId,setIsLoadingPdf}) => {
 
 
     const onFinish = (values) => {
-        editStatusMutate({url: "/Apartment/SelerUpdateAsync", data: values, id: editId});
+        editStatusMutate({url: "/Apartment/SelerUpdate", data: values, id: editId});
     }
     const handleOk = () => {
         form
@@ -69,6 +69,7 @@ const SellingTable = ({data,refetch,setPdfId,setIsLoadingPdf}) => {
             setIsModalOpen(false)
             form.setFieldsValue(initialValueForm)
             refetch()
+
         }
     }, [editStatus]);
 

@@ -1,5 +1,5 @@
 import OrderChart from './OrderChart';
-import ProductChart from "./ProductChart";
+// import ProductChart from "./ProductChart";
 
 
 
@@ -9,7 +9,7 @@ const Dashboard = () => {
     return (
         <div>
             <OrderChart/>
-       <ProductChart/>
+       {/*<ProductChart/>*/}
         </div>
     );
 };

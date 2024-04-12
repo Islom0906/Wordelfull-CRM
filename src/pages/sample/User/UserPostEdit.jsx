@@ -245,7 +245,7 @@ const UserPostEdit = () => {
         const formData = new FormData();
         if (newFileList.length !== 0) {
             formData.append("fromFile", newFileList[0].originFileObj);
-            if (editUserSuccess&& editImageId){
+            if (editUserSuccess&& editImageId!==1){
                 putImage({url: `/Image`, data: formData,id:editImageId})
 
             }else{

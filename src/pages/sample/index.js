@@ -1,7 +1,8 @@
 import React from 'react';
 import {RoutePermittedRole} from '../../shared/constants/AppEnums';
 
-const PDF = React.lazy(() => import('./PDF'));
+const Dashboard = React.lazy(() => import('./Dashboard'));
+// const PDF = React.lazy(() => import('./PDF'));
 const Selling = React.lazy(() => import('./Selling'));
 const Slot = React.lazy(() => import('./Slot'));
 const SlotPostEdit = React.lazy(() => import('./Slot/SlotPostEdit'));
@@ -21,9 +22,14 @@ const ApartmentPostEdit = React.lazy(() => import('./Apartment/ApartmentPostEdit
 export const samplePagesConfigs = [
   {
     permittedRole: RoutePermittedRole.user,
-    path: '/pdf',
-    element: <PDF/>,
+    path: '/dashboard',
+    element: <Dashboard/>,
   },
+  // {
+  //   permittedRole: RoutePermittedRole.user,
+  //   path: '/pdf',
+  //   element: <PDF/>,
+  // },
   {
     permittedRole: RoutePermittedRole.user,
     path: '/selling',
