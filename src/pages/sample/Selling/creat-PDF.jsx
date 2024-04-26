@@ -371,7 +371,7 @@ export default function CreatPDF({data}) {
 
                 <View style={[styles.center, styles.marginY]}>
                     <Text style={styles.title}>
-                        +998 78 113-16-66
+                        +99871 205 02 03
                     </Text>
                 </View>
             </Page>
@@ -407,7 +407,7 @@ export default function CreatPDF({data}) {
                 </View>
                 <View style={[styles.center, styles.marginY]}>
                     <Text style={styles.title}>
-                        +998 78 113-16-66
+                        +99871 205 02 03
                     </Text>
                 </View>
             </Page>
@@ -656,7 +656,7 @@ export default function CreatPDF({data}) {
 
                 <View style={[styles.center, styles.marginY]}>
                     <Text style={styles.title}>
-                        +998 78 113-16-66
+                        +99871 205 02 03
                     </Text>
                 </View>
             </Page>
